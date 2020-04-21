@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WX NOTE</title>
+  <icon>https://upcwxiao.github.io/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://upcwxiao.github.io/"/>
+  <updated>2020-04-21T13:29:45.550Z</updated>
+  <id>https://upcwxiao.github.io/</id>
+  
+  <author>
+    <name>WX</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo发布文章</title>
+    <link href="https://upcwxiao.github.io/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/"/>
+    <id>https://upcwxiao.github.io/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</id>
+    <published>2020-04-21T13:25:32.000Z</published>
+    <updated>2020-04-21T13:29:45.550Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker官方php安装扩展</title>
+    <link href="https://upcwxiao.github.io/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/"/>
+    <id>https://upcwxiao.github.io/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/</id>
+    <published>2020-04-21T13:22:33.000Z</published>
+    <updated>2020-04-21T13:27:49.376Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>php安装xdebug</title>
+    <link href="https://upcwxiao.github.io/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/"/>
+    <id>https://upcwxiao.github.io/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/</id>
+    <published>2020-04-05T11:21:45.000Z</published>
+    <updated>2020-04-07T00:20:47.399Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;打开&lt;a href=&quot;https://xdebug.org/wizard&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo使用</title>
+    <link href="https://upcwxiao.github.io/2020/01/28/hexo%E4%BD%BF%E7%94%A8/"/>
+    <id>https://upcwxiao.github.io/2020/01/28/hexo%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-01-28T06:46:14.000Z</published>
+    <updated>2020-02-07T02:48:49.540Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;官方文档地址（中文）：&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>

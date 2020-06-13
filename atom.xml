@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2020-04-21T13:29:45.550Z</updated>
+  <updated>2020-06-13T04:39:05.561Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vscode开发go</title>
+    <link href="https://upcwxiao.github.io/2020/06/13/vscode%E5%BC%80%E5%8F%91go/"/>
+    <id>https://upcwxiao.github.io/2020/06/13/vscode%E5%BC%80%E5%8F%91go/</id>
+    <published>2020-06-13T04:34:04.000Z</published>
+    <updated>2020-06-13T04:39:05.561Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;设置go模块代理&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux环境安装go</title>
+    <link href="https://upcwxiao.github.io/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/"/>
+    <id>https://upcwxiao.github.io/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/</id>
+    <published>2020-06-13T01:56:24.000Z</published>
+    <updated>2020-06-13T04:39:04.677Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;下载go &lt;a href=&quot;https://studygolang.com/dl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://studygolang.com/dl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;配置环境变量   &lt;figure
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hexo发布文章</title>
@@ -44,7 +94,7 @@
     <link href="https://upcwxiao.github.io/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/"/>
     <id>https://upcwxiao.github.io/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/</id>
     <published>2020-04-21T13:22:33.000Z</published>
-    <updated>2020-04-21T13:27:49.376Z</updated>
+    <updated>2020-06-13T02:04:02.107Z</updated>
     
     <summary type="html">
     

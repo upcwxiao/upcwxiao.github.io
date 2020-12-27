@@ -5,17 +5,17 @@
   
 
   
-  <title>hexo发布文章 | WX NOTE</title>
+  <title>JDK | WX NOTE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123hexo new post XXXnpm run buildnpm run deploy">
+  <meta name="description" content="1、下载JDK 2、解压源码包通过终端在&#x2F;usr&#x2F;local目录下新建java文件夹，命令行： 3、解压源码包通过终端在&#x2F;usr&#x2F;local目录下新建java文件夹，命令行：1sudo mkdir &#x2F;usr&#x2F;local&#x2F;java 然后将下载到压缩包拷贝到java文件夹中，命令行：进入jdk源码包所在目录1cp jdk-8u25-linux-x64.tar.gz &amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo发布文章">
-<meta property="og:url" content="https://upcwxiao.github.io/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:title" content="JDK">
+<meta property="og:url" content="https://upcwxiao.github.io/2020/07/06/JDK/index.html">
 <meta property="og:site_name" content="WX NOTE">
-<meta property="og:description" content="123hexo new post XXXnpm run buildnpm run deploy">
+<meta property="og:description" content="1、下载JDK 2、解压源码包通过终端在&#x2F;usr&#x2F;local目录下新建java文件夹，命令行： 3、解压源码包通过终端在&#x2F;usr&#x2F;local目录下新建java文件夹，命令行：1sudo mkdir &#x2F;usr&#x2F;local&#x2F;java 然后将下载到压缩包拷贝到java文件夹中，命令行：进入jdk源码包所在目录1cp jdk-8u25-linux-x64.tar.gz &amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-21T13:25:32.000Z">
-<meta property="article:modified_time" content="2020-06-13T04:48:26.688Z">
+<meta property="article:published_time" content="2020-07-06T03:25:26.000Z">
+<meta property="article:modified_time" content="2020-07-07T00:11:13.532Z">
 <meta property="article:author" content="WX">
 <meta name="twitter:card" content="summary">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hexo发布文章" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JDK" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="article-date">
-  <time datetime="2020-04-21T13:25:32.000Z" itemprop="datePublished">2020-04-21</time>
+    <a href="/2020/07/06/JDK/" class="article-date">
+  <time datetime="2020-07-06T03:25:26.000Z" itemprop="datePublished">2020-07-06</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo发布文章
+      JDK
     </h1>
   
 
@@ -90,11 +90,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new post XXX</span><br><span class="line">npm run build</span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>
+        <ul>
+<li>1、下载JDK</li>
+<li>2、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</li>
+<li>3、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+然后将下载到压缩包拷贝到java文件夹中，命令行：<br>进入jdk源码包所在目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp jdk-8u25-linux-x64.tar.gz &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+然后进入java目录，命令行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+解压压缩包，命令行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar xvf jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+然后可以把压缩包删除，命令行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li>3、设置jdk环境变量<br>这里采用全局设置方法，它是所有用户的共用的环境变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo gedit ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+打开之后在末尾添加<pre><code>export JAVA_HOME=/usr/local/java/jdk1.8.0_25  
+export JRE_HOME=${JAVA_HOME}/jre  
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+export PATH=${JAVA_HOME}/bin:$PATH</code></pre>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://upcwxiao.github.io/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="ck99y3iiy000166ew9bc16fi8" class="article-share-link">Share</a>
+      <a data-url="https://upcwxiao.github.io/2020/07/06/JDK/" data-id="ckj6y51v60000b4ew1v7t48zr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,19 +117,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/06/Profile/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          linux环境安装go
+          Profile
         
       </div>
     </a>
   
   
-    <a href="/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/13/vscode%E5%BC%80%E5%8F%91go/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">docker官方php安装扩展</div>
+      <div class="article-nav-title">vscode开发go</div>
     </a>
   
 </nav>

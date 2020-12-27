@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2020-12-27T09:55:13.721Z</updated>
+  <updated>2020-12-27T10:36:37.698Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring Boot-Swagger</title>
-    <link href="https://upcwxiao.github.io/2020/12/27/SpringBoot-Swagger/"/>
-    <id>https://upcwxiao.github.io/2020/12/27/SpringBoot-Swagger/</id>
-    <published>2020-12-27T08:44:50.000Z</published>
-    <updated>2020-12-27T09:55:13.721Z</updated>
+    <title>Termux</title>
+    <link href="https://upcwxiao.github.io/2020/12/27/Termux/"/>
+    <id>https://upcwxiao.github.io/2020/12/27/Termux/</id>
+    <published>2020-12-27T09:59:54.000Z</published>
+    <updated>2020-12-27T10:36:37.698Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,33 @@
       
         
         
-          &lt;h3 id=&quot;OpenAPI-amp-Swagger&quot;&gt;&lt;a href=&quot;#OpenAPI-amp-Swagger&quot; class=&quot;headerlink&quot; title=&quot;OpenAPI &amp;amp; Swagger&quot;&gt;&lt;/a&gt;OpenAPI &amp;amp;
+          &lt;p&gt;最近发现了一个很有趣的App Termux可以在Android上模拟Linux&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载途径有Google
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot-Swagger</title>
+    <link href="https://upcwxiao.github.io/2020/12/27/SpringBoot-Swagger/"/>
+    <id>https://upcwxiao.github.io/2020/12/27/SpringBoot-Swagger/</id>
+    <published>2020-12-27T08:44:50.000Z</published>
+    <updated>2020-12-27T10:01:43.124Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;OpenAPI &amp;amp; Swagger&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
         
       
     

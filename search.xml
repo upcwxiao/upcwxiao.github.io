@@ -1,53 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Jenkins</title>
-    <url>/2020/12/28/Jenkins/</url>
+    <title>hexo使用</title>
+    <url>/2020/01/28/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<ul>
-<li><p>docker运行jenkins,详见: <a href="https://github.com/upcwxiao/docker-abc/tree/main/jenkins">https://github.com/upcwxiao/docker-abc/tree/main/jenkins</a></p>
-</li>
-<li><p>建立流水线:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">新建任务,选择流水线</span><br><span class="line">流水线定义选择: Pipeline script from SCM</span><br><span class="line">选择git仓库地址为: https:&#x2F;&#x2F;github.com&#x2F;upcwxiao&#x2F;jenkins_demo</span><br><span class="line">脚本路径为: Jenkinsfile</span><br><span class="line">保存即可</span><br></pre></td></tr></table></figure></li>
+<li>官方文档地址（中文）：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></li>
+</ul>
+<p>在github上建立静态博客</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、github上新建仓库：&lt;user-name&gt;.github.io</span><br><span class="line">2、全局安装hexo：npm install -g hexo</span><br><span class="line">3、初始化项目：hexo init</span><br><span class="line">4、部署到github：npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>docker官方php安装扩展</title>
+    <url>/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<p>PHP 容器配置</p>
+<p>从官方基础版本构建,官方版本默认安装扩展,我們要添加一些其他扩展: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># PHP 容器配置</span><br><span class="line"></span><br><span class="line"># 从官方基础版本构建</span><br><span class="line">FROM php:7.2-fpm</span><br><span class="line"># 官方版本默认安装扩展: </span><br><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br><span class="line"></span><br><span class="line"># 1.0.2 增加 bcmath, calendar, exif, gettext, sockets, dba, </span><br><span class="line"># mysqli, pcntl, pdo_mysql, shmop, sysvmsg, sysvsem, sysvshm 扩展</span><br><span class="line">RUN docker-php-ext-install -j$(nproc) bcmath calendar exif gettext \</span><br><span class="line">sockets dba mysqli pcntl pdo_mysql shmop sysvmsg sysvsem sysvshm</span><br><span class="line"></span><br><span class="line"># 1.0.3 增加 bz2 扩展, 读写 bzip2（.bz2）压缩文件</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libbz2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) bz2</span><br><span class="line"></span><br><span class="line"># 1.0.4 增加 enchant 扩展, 拼写检查库</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libenchant-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) enchant</span><br><span class="line"></span><br><span class="line"># 1.0.5 增加 GD 扩展. 图像处理</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure gd --with-freetype-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; --with-jpeg-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gd</span><br><span class="line"></span><br><span class="line"># 1.0.6 增加 gmp 扩展, GMP</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libgmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gmp</span><br><span class="line"></span><br><span class="line"># 1.0.7 增加 soap wddx xmlrpc tidy xsl 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libxml2-dev libtidy-dev libxslt1-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) soap wddx xmlrpc tidy xsl</span><br><span class="line"></span><br><span class="line"># 1.0.8 增加 zip 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libzip-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) zip</span><br><span class="line"></span><br><span class="line"># 1.0.9 增加 snmp 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libsnmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) snmp</span><br><span class="line"></span><br><span class="line"># 1.0.10 增加 pgsql, pdo_pgsql 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpq-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pgsql pdo_pgsql</span><br><span class="line"></span><br><span class="line"># 1.0.11 增加 pspell 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpspell-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pspell</span><br><span class="line"></span><br><span class="line"># 1.0.12 增加 recode 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends librecode-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) recode</span><br><span class="line"></span><br><span class="line"># 1.0.13 增加 PDO_Firebird 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_firebird</span><br><span class="line"></span><br><span class="line"># 1.0.14 增加 pdo_dblib 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends freetds-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure pdo_dblib --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_dblib</span><br><span class="line"></span><br><span class="line"># 1.0.15 增加 ldap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libldap2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure ldap --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) ldap</span><br><span class="line"></span><br><span class="line"># 1.0.16 增加 imap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure imap --with-kerberos --with-imap-ssl &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) imap</span><br><span class="line"></span><br><span class="line"># 1.0.17 增加 interbase 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) interbase</span><br><span class="line"></span><br><span class="line"># 1.0.18 增加 intl 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libicu-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) intl</span><br><span class="line"></span><br><span class="line"># 1.0.19 增加 mcrypt 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends libmcrypt-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install mcrypt-1.0.1 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable mcrypt</span><br><span class="line"></span><br><span class="line"># 1.0.20 imagick 扩展</span><br><span class="line">RUN export CFLAGS&#x3D;&quot;$PHP_CFLAGS&quot; CPPFLAGS&#x3D;&quot;$PHP_CPPFLAGS&quot; LDFLAGS&#x3D;&quot;$PHP_LDFLAGS&quot; &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libmagickwand-dev &amp;&amp; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install imagick-3.4.3 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable imagick</span><br><span class="line"></span><br><span class="line"># 1.0.21 增加 Memcached 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends zlib1g-dev libmemcached-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install memcached &amp;&amp; \</span><br><span class="line">docker-php-ext-enable memcached</span><br><span class="line"></span><br><span class="line"># 1.0.22 redis 扩展</span><br><span class="line">RUN pecl install redis-4.0.1 &amp;&amp; docker-php-ext-enable redis</span><br><span class="line"></span><br><span class="line"># 1.0.23 增加 opcache 扩展 </span><br><span class="line">RUN docker-php-ext-configure opcache --enable-opcache &amp;&amp; docker-php-ext-install opcache</span><br><span class="line"></span><br><span class="line"># 1.0.24 增加 odbc, pdo_odbc 扩展 </span><br><span class="line">RUN set -ex; \</span><br><span class="line">docker-php-source extract; \</span><br><span class="line">&#123; \</span><br><span class="line">     echo &#39;# https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;php&#x2F;issues&#x2F;103#issuecomment-271413933&#39;; \</span><br><span class="line">     echo &#39;AC_DEFUN([PHP_ALWAYS_SHARED],[])dnl&#39;; \</span><br><span class="line">     echo; \</span><br><span class="line">     cat &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">&#125; &gt; temp.m4; \</span><br><span class="line">mv temp.m4 &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">apt-get update; \</span><br><span class="line">apt-get install -y --no-install-recommends unixodbc-dev; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;*; \</span><br><span class="line">docker-php-ext-configure odbc --with-unixODBC&#x3D;shared,&#x2F;usr; \</span><br><span class="line">docker-php-ext-configure pdo_odbc --with-pdo-odbc&#x3D;unixODBC,&#x2F;usr; \</span><br><span class="line">docker-php-ext-install odbc pdo_odbc; \</span><br><span class="line">docker-php-source delete</span><br><span class="line"></span><br><span class="line"># 镜像信息</span><br><span class="line">LABEL Author&#x3D;&quot;Leo&quot;</span><br><span class="line">LABEL Version&#x3D;&quot;1.0.25-fpm&quot;</span><br><span class="line">LABEL Description&#x3D;&quot;PHP FPM 7.2 镜像. All extensions.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>from：<a href="https://www.jianshu.com/p/20fcca06e27e">https://www.jianshu.com/p/20fcca06e27e</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo发布文章</title>
+    <url>/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new post XXX</span><br><span class="line">npm run build</span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>php安装xdebug</title>
+    <url>/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/</url>
+    <content><![CDATA[<ul>
+<li>打开<a href="https://xdebug.org/wizard" target="_blank" rel="noopener">https://xdebug.org/wizard</a></li>
+<li>输出phpinfo()</li>
+<li>粘贴到界面中</li>
+<li>按照提示操作即可（如果是多版本PHP 注意php-config）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例：</span><br><span class="line">.&#x2F;configure --with-php-config&#x3D;&#x2F;www&#x2F;server&#x2F;php&#x2F;73&#x2F;bin&#x2F;php-config</span><br></pre></td></tr></table></figure></li>
+<li>在php.ini中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zend_extension&#x3D;xdebug.so</span><br><span class="line">xdebug.trace_output_dir&#x3D;&#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_output_dir &#x3D; &#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_enable &#x3D; On</span><br><span class="line">xdebug.profiler_enable_trigger &#x3D; 1</span><br><span class="line">xdebug.remote_enable&#x3D;1</span><br><span class="line">xdebug.remote_handler&#x3D;dbgp</span><br><span class="line">xdebug.remote_mode&#x3D;req</span><br><span class="line">xdebug.remote_host&#x3D;192.168.33.1</span><br><span class="line">xdebug.remote_port&#x3D;9008</span><br><span class="line">xdebug.idekey&#x3D;&quot;PHPSTORM&quot;</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
   </entry>
   <entry>
-    <title>Termux</title>
-    <url>/2020/12/27/Termux/</url>
-    <content><![CDATA[<p>最近发现了一个很有趣的App Termux可以在Android上模拟Linux</p>
-<ul>
-<li>下载途径有Google Play和F-Droid(一个免费和开源应用的下载平台),我下载的是0.103版本</li>
-<li>下载的为apk文件,下载完安装即可.</li>
-<li>推荐一个学习的网址: <a href="https://www.sqlsec.com/2018/05/termux.html">https://www.sqlsec.com/2018/05/termux.html</a></li>
-<li>我的配置:</li>
+    <title>linux环境安装go</title>
+    <url>/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/</url>
+    <content><![CDATA[<ul>
+<li>下载go <a href="https://studygolang.com/dl" target="_blank" rel="noopener">https://studygolang.com/dl</a></li>
+<li>配置环境变量   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;profile或者用户目录下的.profile文件中配置环境变量</span><br><span class="line">区别是在&#x2F;etc&#x2F;profile下配置对所有用户起作用</span><br><span class="line">.profile中配置只对当前用户起作用</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;goProjects </span><br><span class="line">export GOBIN&#x3D;$GOPATH&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOPATH&#x2F;bin</span><br><span class="line"></span><br><span class="line">GOROOT设置golang的安装位置，我们解压到了&#x2F;usr&#x2F;local&#x2F;目录，该目录下的go&#x2F;文件夹一定是go的环境的根目录，</span><br><span class="line">就是打开go目录后别再有一个go&#x2F;目录</span><br><span class="line"></span><br><span class="line">GOBIN目录是执行 go install 后生成可执行文件的目录</span><br><span class="line"></span><br><span class="line">GOPATH是我们的工作目录，一般我们设置到用户目录下，这个要根据你电脑的实际情况去配置</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<p>1.安装vim</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpk install vim</span><br></pre></td></tr></table></figure>
-<p>2.修改源(清华大学的F-Droid源说明)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirror.tuna.tsinghua.edu.cn&#x2F;help&#x2F;termux&#x2F;)</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;termux-packages-24 stable main</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;science.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;science-packages-24 science stable</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;game.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;game-packages-24 games stable</span><br></pre></td></tr></table></figure>
+<p>from:<a href="https://www.jianshu.com/p/33cf4f41cae9" target="_blank" rel="noopener">https://www.jianshu.com/p/33cf4f41cae9</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>vscode开发go</title>
+    <url>/2020/06/13/vscode%E5%BC%80%E5%8F%91go/</url>
+    <content><![CDATA[<ul>
+<li><p>设置go模块代理</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;goproxy.cn&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows/Linux平台按下Ctrl+Shift+P，Mac平台按Command+Shift+P</p>
+</li>
+<li><p>输入Go:Install/Update Tools</p>
+</li>
+<li><p>全选安装</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>JDK</title>
+    <url>/2020/07/06/JDK/</url>
+    <content><![CDATA[<ul>
+<li><p>1、下载JDK</p>
+</li>
+<li><p>2、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
+</li>
+<li><p>3、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>然后将下载到压缩包拷贝到java文件夹中，命令行：<br>进入jdk源码包所在目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp jdk-8u25-linux-x64.tar.gz &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>然后进入java目录，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>解压压缩包，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo tar xvf jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>然后可以把压缩包删除，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rm jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>4、设置jdk环境变量<br>这里采用全局设置方法，它是所有用户的共用的环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo gedit ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+<p>打开之后在末尾添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;java&#x2F;jdk1.8.0_25  </span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Profile</title>
+    <url>/2020/07/06/Profile/</url>
+    <content><![CDATA[<h3 id="环境变量：-etc-profile-etc-bashrc-profile-bashrc"><a href="#环境变量：-etc-profile-etc-bashrc-profile-bashrc" class="headerlink" title="环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc"></a>环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc</h3><p>一、环境变量介绍：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在Linux系统中，环境变量按照其作用范围不同大致可以分为系统级环境变量和用户级环境变量。</span><br><span class="line"></span><br><span class="line">系统级环境变量：每一个登录到系统的用户都能够读取到系统级的环境变量；</span><br><span class="line">用户级环境变量：每一个登录到系统的用户只能够读取属于自己的用户级的环境变量；</span><br><span class="line">自然而然地，环境变量的配置文件也相应的被分成了系统级和用户级两种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　<br>二、系统级：</p>
+<p>1、/etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动后,第一个用户登录时运行,并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置，使用该文件配置的环境变量</span><br><span class="line">将应用于登录到系统的每一个用户。</span><br><span class="line"></span><br><span class="line">提示：在Linux系统中，使用以下命令可以使配置文件立刻生效。</span><br><span class="line"></span><br><span class="line">　　source &#x2F;etc&#x2F;profile</span><br><span class="line">　　echo $PATH</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
-<p>3.手机App默认只能访问自己的数据，如果要访问手机的存储，需要请求权限,执行: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
-<p>4.安装openssh</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
-<p>默认端口是8082,先检查下当前用户whoami, 然后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh u0_a1@192.168.1.108 -p 8022</span><br></pre></td></tr></table></figure>
-<p>然后就可以使用电脑操作了.<br>5.安装nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install nginx</span><br></pre></td></tr></table></figure>
-<p>在安装玩php之后,修改配置: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim $PREFIX&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
-<p>将location ~ .php$的注释取消,fastcgi-pass修改为: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unix:&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;var&#x2F;run&#x2F;php-fpm.sock</span><br></pre></td></tr></table></figure>
-<p>然后在fastcgi-param 前添加: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br><span class="line"></span><br><span class="line">完整的为: </span><br><span class="line">data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html$fastcgi_script_name;</span><br><span class="line"></span><br><span class="line">默认的文件部署路径为:</span><br><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br></pre></td></tr></table></figure>
-<p>6.安装php-fpm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install php-fpm</span><br></pre></td></tr></table></figure>
-<p>7.安装git</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkginstall git</span><br></pre></td></tr></table></figure>
-<p>8.安装java<br>网上知道JDK8的安装,fork下来了: <a href="https://github.com/upcwxiao/Termux-Java">https://github.com/upcwxiao/Termux-Java</a></p>
-<p>至此,Termux安装并能运行了一些服务,经测试Java 还是有点慢,我部署了一个Spring Boot的项目基本链接mysql,reids等,没有跑起来…也可能我的手机配置太低的缘故,毕竟几年前的旧机器了,不过一般的操作,学习还是够用了.</p>
-]]></content>
+<p>2、/etc/bashrc（Ubuntu和Debian中是/etc/bash.bashrc）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在 bash shell 打开时运行，修改该文件配置的环境变量将会影响所有用户使用的bash shell。</span><br><span class="line">注意：这里的bash shell有不同的类别，不同的类别所使用的环境变量配置文件也有所不同。</span><br><span class="line">一般情况下，非登录shell不会执行任何profile文件，非交互shell模式不会执行任何bashrc文件。</span><br></pre></td></tr></table></figure>
+<p>3、/etc/environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动时运行，用于配置与系统运行相关但与用户无关的环境变量，修改该文件配置的环境变量将影响全局。</span><br></pre></td></tr></table></figure>
+
+
+<p>三、用户级：</p>
+<p>1、~/.profile（推荐首选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.profile: executed by Bourne-compatible login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时执行，每个用户都可以使用该文件来配置专属于自己使用的shell信息。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2、~/.bashrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bashrc: executed by bash(1) for non-login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时以及每次打开新的shell时该文件都将被读取，不推荐在这里配置用户专用的环境变量，因为每开一个shell，</span><br><span class="line">该文件都会被读取一次，效率肯定受影响。</span><br><span class="line">生效用：source</span><br><span class="line">bashrc和profile的差异</span><br><span class="line">从上面的英文描述可以知道，bashrc和profile的差异在于：</span><br><span class="line"></span><br><span class="line">　　注意：通常我们修改bashrc,有些linux的发行版本不一定有profile这个文件；</span><br><span class="line"></span><br><span class="line">1. bashrc 是在系统启动后就会自动运行。</span><br><span class="line">2. profile 是在用户登录后才会运行。</span><br><span class="line">3. 进行设置后，可运用source bashrc命令更新bashrc，也可运用source profile命令更新profile。</span><br><span class="line">4. &#x2F;etc&#x2F;profile中设定的变量(全局)的可以作用于任何用户，而~&#x2F;.bashrc等中设定的变量(局部)只能继承</span><br><span class="line">&#x2F;etc&#x2F;profile中的变量，他们是&quot;父子&quot;关系。</span><br></pre></td></tr></table></figure>
+<p>3、~/.bash_profile 或 ~./bash_login</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bash_profile or ~.&#x2F;bash_login - If one of these file exist, bash executes it rather then &quot;~&#x2F;.profile&quot;</span><br><span class="line">when it is started as a login shell. (Bash will prefer &quot;~&#x2F;.bash_profile&quot; to &quot;~&#x2F;.bash_login&quot;).</span><br><span class="line">However, these files won&#39;t influence a graphical session by default.</span><br><span class="line"></span><br><span class="line">以上是ubuntu官网给出的关于~&#x2F;.bash_profile 和 ~.&#x2F;bash_login 的说明，翻译为中文：</span><br><span class="line">~&#x2F;.bash_profile 或 ~.&#x2F;bash_login -</span><br><span class="line">如果有其中的一个文件存在的话, 当启动的是一个登录shell时，Bash 会执行该文件而不会执行~&#x2F;.profile ；</span><br><span class="line">如果两个文件都存在的话，Bash 将会优先执行~&#x2F;.bash_profile 而不是~&#x2F;.bash_login ；</span><br><span class="line">然而, 默认情况下，这些文件不会影响图形会话。</span><br></pre></td></tr></table></figure>
+<p>4、~/.bash_logout</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">当每次退出系统(退出bash shell)时执行该文件。</span><br><span class="line"></span><br><span class="line">注意：Linux系统使用 $VARIABLE_NAME 访问环境变量，多个环境变量之间使用 “:”分隔，Windows系统使用 </span><br><span class="line">%VARIABLE_NAME% 访问环境变量，多个环境变量之间使用 ; 分隔。</span><br></pre></td></tr></table></figure>
+<p>四、执行顺序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般情况下，Linux加载环境变量配置文件的执行顺序为：</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_logout</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Spring Boot-Swagger</title>
@@ -137,126 +211,52 @@ springdoc.swagger-ui.path=/{可以任意地址/}swagger-ui.html
 ]]></content>
   </entry>
   <entry>
-    <title>Profile</title>
-    <url>/2020/07/06/Profile/</url>
-    <content><![CDATA[<h3 id="环境变量：-etc-profile-etc-bashrc-profile-bashrc"><a href="#环境变量：-etc-profile-etc-bashrc-profile-bashrc" class="headerlink" title="环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc"></a>环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc</h3><p>一、环境变量介绍：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在Linux系统中，环境变量按照其作用范围不同大致可以分为系统级环境变量和用户级环境变量。</span><br><span class="line"></span><br><span class="line">系统级环境变量：每一个登录到系统的用户都能够读取到系统级的环境变量；</span><br><span class="line">用户级环境变量：每一个登录到系统的用户只能够读取属于自己的用户级的环境变量；</span><br><span class="line">自然而然地，环境变量的配置文件也相应的被分成了系统级和用户级两种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>　<br>二、系统级：</p>
-<p>1、/etc/profile</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动后,第一个用户登录时运行,并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置，使用该文件配置的环境变量</span><br><span class="line">将应用于登录到系统的每一个用户。</span><br><span class="line"></span><br><span class="line">提示：在Linux系统中，使用以下命令可以使配置文件立刻生效。</span><br><span class="line"></span><br><span class="line">　　source &#x2F;etc&#x2F;profile</span><br><span class="line">　　echo $PATH</span><br></pre></td></tr></table></figure>
+    <title>Termux</title>
+    <url>/2020/12/27/Termux/</url>
+    <content><![CDATA[<p>最近发现了一个很有趣的App Termux可以在Android上模拟Linux</p>
+<ul>
+<li>下载途径有Google Play和F-Droid(一个免费和开源应用的下载平台),我下载的是0.103版本</li>
+<li>下载的为apk文件,下载完安装即可.</li>
+<li>推荐一个学习的网址: <a href="https://www.sqlsec.com/2018/05/termux.html">https://www.sqlsec.com/2018/05/termux.html</a></li>
+<li>我的配置:</li>
+</ul>
+<p>1.安装vim</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpk install vim</span><br></pre></td></tr></table></figure>
+<p>2.修改源(清华大学的F-Droid源说明)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirror.tuna.tsinghua.edu.cn&#x2F;help&#x2F;termux&#x2F;)</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;termux-packages-24 stable main</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;science.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;science-packages-24 science stable</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;game.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;game-packages-24 games stable</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
-<p>2、/etc/bashrc（Ubuntu和Debian中是/etc/bash.bashrc）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在 bash shell 打开时运行，修改该文件配置的环境变量将会影响所有用户使用的bash shell。</span><br><span class="line">注意：这里的bash shell有不同的类别，不同的类别所使用的环境变量配置文件也有所不同。</span><br><span class="line">一般情况下，非登录shell不会执行任何profile文件，非交互shell模式不会执行任何bashrc文件。</span><br></pre></td></tr></table></figure>
-<p>3、/etc/environment</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动时运行，用于配置与系统运行相关但与用户无关的环境变量，修改该文件配置的环境变量将影响全局。</span><br></pre></td></tr></table></figure>
-
-
-<p>三、用户级：</p>
-<p>1、~/.profile（推荐首选）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.profile: executed by Bourne-compatible login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时执行，每个用户都可以使用该文件来配置专属于自己使用的shell信息。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>2、~/.bashrc</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bashrc: executed by bash(1) for non-login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时以及每次打开新的shell时该文件都将被读取，不推荐在这里配置用户专用的环境变量，因为每开一个shell，</span><br><span class="line">该文件都会被读取一次，效率肯定受影响。</span><br><span class="line">生效用：source</span><br><span class="line">bashrc和profile的差异</span><br><span class="line">从上面的英文描述可以知道，bashrc和profile的差异在于：</span><br><span class="line"></span><br><span class="line">　　注意：通常我们修改bashrc,有些linux的发行版本不一定有profile这个文件；</span><br><span class="line"></span><br><span class="line">1. bashrc 是在系统启动后就会自动运行。</span><br><span class="line">2. profile 是在用户登录后才会运行。</span><br><span class="line">3. 进行设置后，可运用source bashrc命令更新bashrc，也可运用source profile命令更新profile。</span><br><span class="line">4. &#x2F;etc&#x2F;profile中设定的变量(全局)的可以作用于任何用户，而~&#x2F;.bashrc等中设定的变量(局部)只能继承</span><br><span class="line">&#x2F;etc&#x2F;profile中的变量，他们是&quot;父子&quot;关系。</span><br></pre></td></tr></table></figure>
-<p>3、~/.bash_profile 或 ~./bash_login</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bash_profile or ~.&#x2F;bash_login - If one of these file exist, bash executes it rather then &quot;~&#x2F;.profile&quot;</span><br><span class="line">when it is started as a login shell. (Bash will prefer &quot;~&#x2F;.bash_profile&quot; to &quot;~&#x2F;.bash_login&quot;).</span><br><span class="line">However, these files won&#39;t influence a graphical session by default.</span><br><span class="line"></span><br><span class="line">以上是ubuntu官网给出的关于~&#x2F;.bash_profile 和 ~.&#x2F;bash_login 的说明，翻译为中文：</span><br><span class="line">~&#x2F;.bash_profile 或 ~.&#x2F;bash_login -</span><br><span class="line">如果有其中的一个文件存在的话, 当启动的是一个登录shell时，Bash 会执行该文件而不会执行~&#x2F;.profile ；</span><br><span class="line">如果两个文件都存在的话，Bash 将会优先执行~&#x2F;.bash_profile 而不是~&#x2F;.bash_login ；</span><br><span class="line">然而, 默认情况下，这些文件不会影响图形会话。</span><br></pre></td></tr></table></figure>
-<p>4、~/.bash_logout</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">当每次退出系统(退出bash shell)时执行该文件。</span><br><span class="line"></span><br><span class="line">注意：Linux系统使用 $VARIABLE_NAME 访问环境变量，多个环境变量之间使用 “:”分隔，Windows系统使用 </span><br><span class="line">%VARIABLE_NAME% 访问环境变量，多个环境变量之间使用 ; 分隔。</span><br></pre></td></tr></table></figure>
-<p>四、执行顺序</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般情况下，Linux加载环境变量配置文件的执行顺序为：</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_logout</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>JDK</title>
-    <url>/2020/07/06/JDK/</url>
-    <content><![CDATA[<ul>
-<li><p>1、下载JDK</p>
-</li>
-<li><p>2、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
-</li>
-<li><p>3、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
-<p>然后将下载到压缩包拷贝到java文件夹中，命令行：<br>进入jdk源码包所在目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp jdk-8u25-linux-x64.tar.gz &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
-<p>然后进入java目录，命令行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
-<p>解压压缩包，命令行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo tar xvf jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-<p>然后可以把压缩包删除，命令行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rm jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-</li>
-<li><p>4、设置jdk环境变量<br>这里采用全局设置方法，它是所有用户的共用的环境变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo gedit ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
-<p>打开之后在末尾添加</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;java&#x2F;jdk1.8.0_25  </span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<p>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</p>
-</li>
-</ul>
+<p>3.手机App默认只能访问自己的数据，如果要访问手机的存储，需要请求权限,执行: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+<p>4.安装openssh</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
+<p>默认端口是8082,先检查下当前用户whoami, 然后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh u0_a1@192.168.1.108 -p 8022</span><br></pre></td></tr></table></figure>
+<p>然后就可以使用电脑操作了.<br>5.安装nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install nginx</span><br></pre></td></tr></table></figure>
+<p>在安装玩php之后,修改配置: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim $PREFIX&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+<p>将location ~ .php$的注释取消,fastcgi-pass修改为: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unix:&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;var&#x2F;run&#x2F;php-fpm.sock</span><br></pre></td></tr></table></figure>
+<p>然后在fastcgi-param 前添加: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br><span class="line"></span><br><span class="line">完整的为: </span><br><span class="line">data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html$fastcgi_script_name;</span><br><span class="line"></span><br><span class="line">默认的文件部署路径为:</span><br><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br></pre></td></tr></table></figure>
+<p>6.安装php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install php-fpm</span><br></pre></td></tr></table></figure>
+<p>7.安装git</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkginstall git</span><br></pre></td></tr></table></figure>
+<p>8.安装java<br>网上知道JDK8的安装,fork下来了: <a href="https://github.com/upcwxiao/Termux-Java">https://github.com/upcwxiao/Termux-Java</a></p>
+<p>至此,Termux安装并能运行了一些服务,经测试Java 还是有点慢,我部署了一个Spring Boot的项目基本链接mysql,reids等,没有跑起来…也可能我的手机配置太低的缘故,毕竟几年前的旧机器了,不过一般的操作,学习还是够用了.</p>
 ]]></content>
   </entry>
   <entry>
-    <title>vscode开发go</title>
-    <url>/2020/06/13/vscode%E5%BC%80%E5%8F%91go/</url>
+    <title>Jenkins</title>
+    <url>/2020/12/28/Jenkins/</url>
     <content><![CDATA[<ul>
-<li><p>设置go模块代理</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;goproxy.cn&#x2F;</span><br></pre></td></tr></table></figure>
+<li><p>docker运行jenkins,详见: <a href="https://github.com/upcwxiao/docker-abc/tree/main/jenkins">https://github.com/upcwxiao/docker-abc/tree/main/jenkins</a></p>
 </li>
-<li><p>Windows/Linux平台按下Ctrl+Shift+P，Mac平台按Command+Shift+P</p>
-</li>
-<li><p>输入Go:Install/Update Tools</p>
-</li>
-<li><p>全选安装</p>
-</li>
+<li><p>建立流水线:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">新建任务,选择流水线</span><br><span class="line">流水线定义选择: Pipeline script from SCM</span><br><span class="line">选择git仓库地址为: https:&#x2F;&#x2F;github.com&#x2F;upcwxiao&#x2F;jenkins_demo</span><br><span class="line">脚本路径为: Jenkinsfile</span><br><span class="line">保存即可</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>linux环境安装go</title>
-    <url>/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/</url>
-    <content><![CDATA[<ul>
-<li>下载go <a href="https://studygolang.com/dl" target="_blank" rel="noopener">https://studygolang.com/dl</a></li>
-<li>配置环境变量   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;profile或者用户目录下的.profile文件中配置环境变量</span><br><span class="line">区别是在&#x2F;etc&#x2F;profile下配置对所有用户起作用</span><br><span class="line">.profile中配置只对当前用户起作用</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;goProjects </span><br><span class="line">export GOBIN&#x3D;$GOPATH&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOPATH&#x2F;bin</span><br><span class="line"></span><br><span class="line">GOROOT设置golang的安装位置，我们解压到了&#x2F;usr&#x2F;local&#x2F;目录，该目录下的go&#x2F;文件夹一定是go的环境的根目录，</span><br><span class="line">就是打开go目录后别再有一个go&#x2F;目录</span><br><span class="line"></span><br><span class="line">GOBIN目录是执行 go install 后生成可执行文件的目录</span><br><span class="line"></span><br><span class="line">GOPATH是我们的工作目录，一般我们设置到用户目录下，这个要根据你电脑的实际情况去配置</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>from:<a href="https://www.jianshu.com/p/33cf4f41cae9" target="_blank" rel="noopener">https://www.jianshu.com/p/33cf4f41cae9</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>hexo发布文章</title>
-    <url>/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new post XXX</span><br><span class="line">npm run build</span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>docker官方php安装扩展</title>
-    <url>/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<p>PHP 容器配置</p>
-<p>从官方基础版本构建,官方版本默认安装扩展,我們要添加一些其他扩展: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># PHP 容器配置</span><br><span class="line"></span><br><span class="line"># 从官方基础版本构建</span><br><span class="line">FROM php:7.2-fpm</span><br><span class="line"># 官方版本默认安装扩展: </span><br><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br><span class="line"></span><br><span class="line"># 1.0.2 增加 bcmath, calendar, exif, gettext, sockets, dba, </span><br><span class="line"># mysqli, pcntl, pdo_mysql, shmop, sysvmsg, sysvsem, sysvshm 扩展</span><br><span class="line">RUN docker-php-ext-install -j$(nproc) bcmath calendar exif gettext \</span><br><span class="line">sockets dba mysqli pcntl pdo_mysql shmop sysvmsg sysvsem sysvshm</span><br><span class="line"></span><br><span class="line"># 1.0.3 增加 bz2 扩展, 读写 bzip2（.bz2）压缩文件</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libbz2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) bz2</span><br><span class="line"></span><br><span class="line"># 1.0.4 增加 enchant 扩展, 拼写检查库</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libenchant-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) enchant</span><br><span class="line"></span><br><span class="line"># 1.0.5 增加 GD 扩展. 图像处理</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure gd --with-freetype-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; --with-jpeg-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gd</span><br><span class="line"></span><br><span class="line"># 1.0.6 增加 gmp 扩展, GMP</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libgmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gmp</span><br><span class="line"></span><br><span class="line"># 1.0.7 增加 soap wddx xmlrpc tidy xsl 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libxml2-dev libtidy-dev libxslt1-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) soap wddx xmlrpc tidy xsl</span><br><span class="line"></span><br><span class="line"># 1.0.8 增加 zip 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libzip-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) zip</span><br><span class="line"></span><br><span class="line"># 1.0.9 增加 snmp 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libsnmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) snmp</span><br><span class="line"></span><br><span class="line"># 1.0.10 增加 pgsql, pdo_pgsql 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpq-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pgsql pdo_pgsql</span><br><span class="line"></span><br><span class="line"># 1.0.11 增加 pspell 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpspell-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pspell</span><br><span class="line"></span><br><span class="line"># 1.0.12 增加 recode 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends librecode-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) recode</span><br><span class="line"></span><br><span class="line"># 1.0.13 增加 PDO_Firebird 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_firebird</span><br><span class="line"></span><br><span class="line"># 1.0.14 增加 pdo_dblib 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends freetds-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure pdo_dblib --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_dblib</span><br><span class="line"></span><br><span class="line"># 1.0.15 增加 ldap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libldap2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure ldap --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) ldap</span><br><span class="line"></span><br><span class="line"># 1.0.16 增加 imap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure imap --with-kerberos --with-imap-ssl &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) imap</span><br><span class="line"></span><br><span class="line"># 1.0.17 增加 interbase 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) interbase</span><br><span class="line"></span><br><span class="line"># 1.0.18 增加 intl 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libicu-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) intl</span><br><span class="line"></span><br><span class="line"># 1.0.19 增加 mcrypt 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends libmcrypt-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install mcrypt-1.0.1 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable mcrypt</span><br><span class="line"></span><br><span class="line"># 1.0.20 imagick 扩展</span><br><span class="line">RUN export CFLAGS&#x3D;&quot;$PHP_CFLAGS&quot; CPPFLAGS&#x3D;&quot;$PHP_CPPFLAGS&quot; LDFLAGS&#x3D;&quot;$PHP_LDFLAGS&quot; &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libmagickwand-dev &amp;&amp; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install imagick-3.4.3 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable imagick</span><br><span class="line"></span><br><span class="line"># 1.0.21 增加 Memcached 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends zlib1g-dev libmemcached-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install memcached &amp;&amp; \</span><br><span class="line">docker-php-ext-enable memcached</span><br><span class="line"></span><br><span class="line"># 1.0.22 redis 扩展</span><br><span class="line">RUN pecl install redis-4.0.1 &amp;&amp; docker-php-ext-enable redis</span><br><span class="line"></span><br><span class="line"># 1.0.23 增加 opcache 扩展 </span><br><span class="line">RUN docker-php-ext-configure opcache --enable-opcache &amp;&amp; docker-php-ext-install opcache</span><br><span class="line"></span><br><span class="line"># 1.0.24 增加 odbc, pdo_odbc 扩展 </span><br><span class="line">RUN set -ex; \</span><br><span class="line">docker-php-source extract; \</span><br><span class="line">&#123; \</span><br><span class="line">     echo &#39;# https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;php&#x2F;issues&#x2F;103#issuecomment-271413933&#39;; \</span><br><span class="line">     echo &#39;AC_DEFUN([PHP_ALWAYS_SHARED],[])dnl&#39;; \</span><br><span class="line">     echo; \</span><br><span class="line">     cat &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">&#125; &gt; temp.m4; \</span><br><span class="line">mv temp.m4 &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">apt-get update; \</span><br><span class="line">apt-get install -y --no-install-recommends unixodbc-dev; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;*; \</span><br><span class="line">docker-php-ext-configure odbc --with-unixODBC&#x3D;shared,&#x2F;usr; \</span><br><span class="line">docker-php-ext-configure pdo_odbc --with-pdo-odbc&#x3D;unixODBC,&#x2F;usr; \</span><br><span class="line">docker-php-ext-install odbc pdo_odbc; \</span><br><span class="line">docker-php-source delete</span><br><span class="line"></span><br><span class="line"># 镜像信息</span><br><span class="line">LABEL Author&#x3D;&quot;Leo&quot;</span><br><span class="line">LABEL Version&#x3D;&quot;1.0.25-fpm&quot;</span><br><span class="line">LABEL Description&#x3D;&quot;PHP FPM 7.2 镜像. All extensions.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>from：<a href="https://www.jianshu.com/p/20fcca06e27e">https://www.jianshu.com/p/20fcca06e27e</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>php安装xdebug</title>
-    <url>/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/</url>
-    <content><![CDATA[<ul>
-<li>打开<a href="https://xdebug.org/wizard" target="_blank" rel="noopener">https://xdebug.org/wizard</a></li>
-<li>输出phpinfo()</li>
-<li>粘贴到界面中</li>
-<li>按照提示操作即可（如果是多版本PHP 注意php-config）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例：</span><br><span class="line">.&#x2F;configure --with-php-config&#x3D;&#x2F;www&#x2F;server&#x2F;php&#x2F;73&#x2F;bin&#x2F;php-config</span><br></pre></td></tr></table></figure></li>
-<li>在php.ini中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zend_extension&#x3D;xdebug.so</span><br><span class="line">xdebug.trace_output_dir&#x3D;&#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_output_dir &#x3D; &#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_enable &#x3D; On</span><br><span class="line">xdebug.profiler_enable_trigger &#x3D; 1</span><br><span class="line">xdebug.remote_enable&#x3D;1</span><br><span class="line">xdebug.remote_handler&#x3D;dbgp</span><br><span class="line">xdebug.remote_mode&#x3D;req</span><br><span class="line">xdebug.remote_host&#x3D;192.168.33.1</span><br><span class="line">xdebug.remote_port&#x3D;9008</span><br><span class="line">xdebug.idekey&#x3D;&quot;PHPSTORM&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>hexo使用</title>
-    <url>/2020/01/28/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<ul>
-<li>官方文档地址（中文）：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></li>
-</ul>
-<p>在github上建立静态博客</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、github上新建仓库：&lt;user-name&gt;.github.io</span><br><span class="line">2、全局安装hexo：npm install -g hexo</span><br><span class="line">3、初始化项目：hexo init</span><br><span class="line">4、部署到github：npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>

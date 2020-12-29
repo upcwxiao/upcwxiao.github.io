@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Jenkins</title>
+    <url>/2020/12/28/Jenkins/</url>
+    <content><![CDATA[<ul>
+<li><p>docker运行jenkins,详见: <a href="https://github.com/upcwxiao/docker-abc/tree/main/jenkins">https://github.com/upcwxiao/docker-abc/tree/main/jenkins</a></p>
+</li>
+<li><p>建立流水线:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">新建任务,选择流水线</span><br><span class="line">流水线定义选择: Pipeline script from SCM</span><br><span class="line">选择git仓库地址为: https:&#x2F;&#x2F;github.com&#x2F;upcwxiao&#x2F;jenkins_demo</span><br><span class="line">脚本路径为: Jenkinsfile</span><br><span class="line">保存即可</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Termux</title>
+    <url>/2020/12/27/Termux/</url>
+    <content><![CDATA[<p>最近发现了一个很有趣的App Termux可以在Android上模拟Linux</p>
+<ul>
+<li>下载途径有Google Play和F-Droid(一个免费和开源应用的下载平台),我下载的是0.103版本</li>
+<li>下载的为apk文件,下载完安装即可.</li>
+<li>推荐一个学习的网址: <a href="https://www.sqlsec.com/2018/05/termux.html">https://www.sqlsec.com/2018/05/termux.html</a></li>
+<li>我的配置:</li>
+</ul>
+<p>1.安装vim</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpk install vim</span><br></pre></td></tr></table></figure>
+<p>2.修改源(清华大学的F-Droid源说明)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirror.tuna.tsinghua.edu.cn&#x2F;help&#x2F;termux&#x2F;)</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;termux-packages-24 stable main</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;science.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;science-packages-24 science stable</span><br><span class="line"></span><br><span class="line">编辑 $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;game.list 修改为如下内容</span><br><span class="line"># The termux repository mirror from TUNA:</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;game-packages-24 games stable</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>3.手机App默认只能访问自己的数据，如果要访问手机的存储，需要请求权限,执行: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+<p>4.安装openssh</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
+<p>默认端口是8082,先检查下当前用户whoami, 然后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh u0_a1@192.168.1.108 -p 8022</span><br></pre></td></tr></table></figure>
+<p>然后就可以使用电脑操作了.<br>5.安装nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install nginx</span><br></pre></td></tr></table></figure>
+<p>在安装玩php之后,修改配置: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim $PREFIX&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+<p>将location ~ .php$的注释取消,fastcgi-pass修改为: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unix:&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;var&#x2F;run&#x2F;php-fpm.sock</span><br></pre></td></tr></table></figure>
+<p>然后在fastcgi-param 前添加: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br><span class="line"></span><br><span class="line">完整的为: </span><br><span class="line">data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html$fastcgi_script_name;</span><br><span class="line"></span><br><span class="line">默认的文件部署路径为:</span><br><span class="line">&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br></pre></td></tr></table></figure>
+<p>6.安装php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install php-fpm</span><br></pre></td></tr></table></figure>
+<p>7.安装git</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkginstall git</span><br></pre></td></tr></table></figure>
+<p>8.安装java<br>网上知道JDK8的安装,fork下来了: <a href="https://github.com/upcwxiao/Termux-Java">https://github.com/upcwxiao/Termux-Java</a></p>
+<p>至此,Termux安装并能运行了一些服务,经测试Java 还是有点慢,我部署了一个Spring Boot的项目基本链接mysql,reids等,没有跑起来…也可能我的手机配置太低的缘故,毕竟几年前的旧机器了,不过一般的操作,学习还是够用了.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Spring Boot-Swagger</title>
+    <url>/2020/12/27/SpringBoot-Swagger/</url>
+    <content><![CDATA[<ul>
+<li>OpenAPI &amp; Swagger<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenAPI:“开放 API 战略” (Open API Initiativev) , 在2017年发布了 OpenAPI 规范3.0版的预览，</span><br><span class="line">并规划于二月底发布实施草案（Implementer Draft）.</span><br><span class="line"></span><br><span class="line">OpenAPI规范(OpenAPI Specification,简称:OAS)是基于Swagger 2.0构建，Swagger是SmartBear2015年</span><br><span class="line">贡献给Linux基金会,使Swagger项目专注于围绕OAS的开源工具.</span><br></pre></td></tr></table></figure></li>
+<li>SpringFox</li>
+</ul>
+<p>SpringFox是Spring社区维护的一个项目（非官方），帮助使用者将Swagger2集成到 Spring中,用于Spring中<br>帮助开发者生成文档，并可以轻松的在Spring Boot中使用.<br>但,其在2020.7月才更新支持OpenAPI3,目前网上大多的文档都是Swagger2的配置说明,官方也未更新新的文档,<br>仅发布一个新的版本,好处是兼容Swagger2注解.</p>
+<p>官方地址: <a href="http://springfox.github.io/springfox">http://springfox.github.io/springfox</a></p>
+<p>Springfox 3.0.0添加到Spring Boot项目中</p>
+<p>1.引入依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.0.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>2.添加自定义配置,也可以不添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @author upcwxiao</span><br><span class="line"> *&#x2F;</span><br><span class="line">@Component</span><br><span class="line">public class ApplicationContextUtil implements ApplicationContextAware &#123;</span><br><span class="line"></span><br><span class="line">    private static ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">    public ApplicationContextUtil() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException &#123;</span><br><span class="line">        ApplicationContextUtil.applicationContext &#x3D; applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Object getBean(String beanName) &#123;</span><br><span class="line">        return applicationContext !&#x3D; null ? applicationContext.getBean( beanName ) : null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 通过class获取Bean</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz) &#123;</span><br><span class="line">        return applicationContext !&#x3D; null ? applicationContext.getBean( clazz ) : null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 通过name,以及Clazz返回指定的Bean</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; T getBean(String name, Class&lt;T&gt; clazz) &#123;</span><br><span class="line">        return applicationContext !&#x3D; null ? applicationContext.getBean( name, clazz ) : null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 国际化使用</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static String getMessage(String key) &#123;</span><br><span class="line">        return applicationContext !&#x3D; null ? applicationContext.getMessage(key, null, Locale.getDefault()) : StringUtils.EMPTY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取环境</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static String getActiveProfile() &#123;</span><br><span class="line">        return applicationContext !&#x3D; null ? applicationContext.getEnvironment().getActiveProfiles()[0] : StringUtils.EMPTY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@EnableOpenApi</span><br><span class="line">public class SwaggerConfig &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * swagger2的配置文件</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Bean</span><br><span class="line">    public Docket createRestApi() &#123;</span><br><span class="line"></span><br><span class="line">        boolean isNoProd &#x3D; !&quot;prod&quot;.equals(ApplicationContextUtil.getActiveProfile());</span><br><span class="line"></span><br><span class="line">        return new Docket(DocumentationType.OAS_30)</span><br><span class="line">                .enable(isNoProd)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(&quot;com.upcwxiao.blog.controller.admin&quot;))</span><br><span class="line">                .paths(PathSelectors.any())</span><br></pre></td></tr></table></figure>
+<pre><code>/**
+ * 构建api文档的信息
+ */
+private ApiInfo apiInfo() &#123;
+    return new ApiInfoBuilder()
+            // 设置页面标题
+            .title(&quot;使用swagger3构建api接口文档&quot;)
+            // 设置联系人
+            .contact(new Contact(&quot;upcwxiao&quot;, &quot;http://127.0.0.1&quot;, &quot;upcwxiao@xx.com&quot;))
+            // 描述
+            .description(&quot;欢迎访问接口文档，这里是描述信息&quot;)
+            // 定义版本号
+            .version(&quot;1.0&quot;)
+            .build();
+&#125;</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3.访问地址: </span><br></pre></td></tr></table></figure>
+<p>/swagger-ui/index.html</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- SpringDoc</span><br><span class="line"></span><br><span class="line">SpringDoc是Spring社区维护的一个项目（非官方），帮助使用者将Swagger3集成到 Spring中,也是用来在Spring中</span><br><span class="line">帮助开发者生成文档，并可以轻松的在Spring Boot中使用.</span><br><span class="line">其支持Swagger3较早,单其注解与Swagger2不兼容.</span><br><span class="line"></span><br><span class="line">官方文档地址: https:&#x2F;&#x2F;springdoc.org&#x2F;#Introduction</span><br><span class="line"></span><br><span class="line">添加到Spring Boot中:</span><br><span class="line"></span><br><span class="line">1.引入依赖</span><br></pre></td></tr></table></figure>
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-ui</artifactId>
+    <version>1.5.2</version>
+</dependency>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2.添加配置:</span><br></pre></td></tr></table></figure>
+springdoc.packagesToScan=com.upcwxiao.blog.controller.admin
+springdoc.pathsToMatch=/**
+springdoc.swagger-ui.path=/{可以任意地址/}swagger-ui.html
+```
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu-删除内核</title>
+    <url>/2020/07/07/Ubuntu-%E5%88%A0%E9%99%A4%E5%86%85%E6%A0%B8/</url>
+    <content><![CDATA[<ul>
+<li>第一步<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看当前内核 uname -a</span><br></pre></td></tr></table></figure></li>
+<li>第二步<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看所有内核 dpkg --get-selections | grep linux</span><br></pre></td></tr></table></figure></li>
+<li>第三部<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">移除冗余内核 sudo apt-get remove \</span><br><span class="line">linux-headers-4.15.0-39 \</span><br><span class="line">linux-headers-4.15.0-39-generic \</span><br><span class="line">linux-image-4.15.0-39-generic \</span><br><span class="line">linux-modules-4.15.0-39-generic \</span><br><span class="line">linux-modules-extra-4.15.0-39-generic</span><br><span class="line"></span><br><span class="line">状态为deinstall即已经卸载，如果觉得看着不舒服的话可以使用purge连配置文件里一起彻底删除，清理内核列表</span><br><span class="line"></span><br><span class="line">sudo apt-get purge \</span><br><span class="line">linux-headers-4.15.0-39 \</span><br><span class="line">linux-headers-4.15.0-39-generic \</span><br><span class="line">linux-image-4.15.0-39-generic \</span><br><span class="line">linux-modules-4.15.0-39-generic \</span><br><span class="line">linux-modules-extra-4.15.0-39-generic</span><br></pre></td></tr></table></figure></li>
+<li>第四部<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">更新系统引导 sudo update-grub  #根据情况选择grub&#x2F;grub2</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>向前向后兼容</title>
+    <url>/2020/07/07/%E5%90%91%E5%89%8D%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/</url>
+    <content><![CDATA[<p>向后兼容处理的是一个以较早版本编译的程序集是否可以在较新版本上执行的问题。向前兼容处理的是一个以较新版本编译的程序集是否可以在较老版本上执行的问题。向后兼容是主要变动产品对类型定义和类型的行为。向前兼容是通过元数据版本来控制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引用两段微软网站上的话，以资参考理解：</span><br><span class="line">向后兼容性。2007 Microsoft Office 系统向后兼容下列早期版本：Microsoft Office 2000、Microsoft Office XP 和 </span><br><span class="line">Microsoft Office 2003。这些版本的用户可以轻松地采用新的格式，并继续从现有文件中获得最大的益处。特别是他们还可以继续</span><br><span class="line">使用旧的 .doc、.xls 和 .ppt 二进制格式，这些格式与 2007 文件格式完全兼容。早期 Office 版本的用户可以下载一个免费</span><br><span class="line">更新，这样他们就可以在早期版本中使用新格式打开和编辑文件。安装 2007 Office 版本的用户可以将默认的文件格式设置为他们</span><br><span class="line">选择的任何格式。这有助于确保用户能够继续使用基于早期版本的第三方解决方案，并与已升级的同事、供应商、客户和其他人协同工作。</span><br></pre></td></tr></table></figure>
+<p>向前兼容性：应用程序的早期版本能够打开较新版本中的文件并忽略早期版本中未实现的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例如，Word 2003 向前兼容 Word 2007，因为它能够成功地使用转换器打开 Word 2007 文件。</span><br><span class="line">向前兼容的英文为 Forwards Compatibility，Forward有 “将来” 的含义。因此向前兼容就是指：以前的版本支持现在版本</span><br><span class="line">生成的数据，现在的版本支持以后的版本数据。比如你的CD盘可以放在CD光驱播放，也可以放在DVD光驱播放。</span><br><span class="line">向后兼容的英文为Backwards Compatibility，Backward有 “回头” 的意思。所以向后兼容就是指现在的版本可以支持</span><br><span class="line">以前的版本数据。比如你的PC的DVD光驱也可以播放CD盘。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>字符编码趣闻</title>
+    <url>/2020/07/07/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%B6%A3%E9%97%BB/</url>
+    <content><![CDATA[<h3 id="unicode，ansi，utf-8，unicode-big-endian的故事"><a href="#unicode，ansi，utf-8，unicode-big-endian的故事" class="headerlink" title="unicode，ansi，utf-8，unicode big endian的故事"></a>unicode，ansi，utf-8，unicode big endian的故事</h3><p>很久很久以前，有一群人，他们决定用8个可以开合的晶体管来组合成不同的状态，以表示世界上的万物。他们看到8个开关状态是好的，于是他们把这称为”字节”。<br>再后来，他们又做了一些可以处理这些字节的机器，机器开动了，可以用字节来组合出很多状态，状态开始变来变去。他们看到这样是好的，于是它们就这机器称为”计算机”。 </p>
+<p>开始计算机只在美国用。八位的字节一共可以组合出256(2的8次方)种不同的状态。<br>他们把其中的编号从0开始的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就要做一些约定的动作。遇上00x10, 终端就换行，遇上0x07, 终端就向人们嘟嘟叫，遇上0x1b, 打印机就打印反白的字，或者终端就用彩色显示字母。他们看到这样很好，于是就把这些0x20以下的字节状态称为”控制码”。 </p>
+<a id="more"></a>
+
+<p>他们又把所有的空 格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号，这样计算机就可以用不同字节来存储英语的文字了。大家看到这样，都感觉很好，于是大家都把这个方案叫做 ANSI 的”Ascii”编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的ASCII方案来保存英文文字。<br>后来，就像建造巴比伦塔一样，世界各地的都开始使用计算机，但是很多国家用的不是英文，他们的字母里有许多是ASCII里没有的，为了可以在计算机保存他们的文字，他们决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用到的横线、竖线、交叉等形状，一直把序号编到了最后一个状态255。从128到255这一页的字符集被称”扩展字符集”。从此之后，贪婪的人类再没有新的状态可以用了，美帝国主义可能没有想到还有第三世界国家的人们也希望可以用到计算机吧！<br>等中国人们得到计算机时，已经没有可以利用的字节状态来表示汉字，况且有6000多个常用汉字需要保存呢。但是这难不倒智慧的中国人民，我们不客气地把那些127号之后的奇异符号们直接取消掉, 规定：一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节（他称之为高字节）从0xA1用到 0xF7，后面一个字节（低字节）从0xA1到0xFE，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的 字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。<br>中国人民看到这样很不错，于是就把这种汉字方案叫做 “GB2312”。GB2312 是对 ASCII 的中文扩展。<br>但是中国的汉字太多了，我们很快就就发现有许多人的人名没有办法在这里打出来，特别是某些很会麻烦别人的国家领导人。于是我们不得不继续把 GB2312 没有用到的码位找出来老实不客气地用上。<br>后来还是不够用，于是干脆不再要求低字节一定是127号之后的内码，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。结果扩展之后的编码方案被称为 GBK 标准，GBK 包括了 GB2312 的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。<br>后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，GBK 扩成了 GB18030。从此之后，中华民族的文化就可以在计算机时代中传承了。<br>中国的程序员们看到这一系列汉字编码的标准是好的，于是通称他们叫做 “DBCS”（Double Byte Charecter Set 双字节字符集）。在DBCS系列标准里，最大的特点是两字节长的汉字字符和一字节长的英文字符并存于同一套编码方案里，因此他们写的程序为了支持中文处理，必须要注意字串里的每一个字节的值，如果这个值是大于127的，那么就认为一个双字节字符集里的字符出现了。那时候凡是受过加持，会编程的计算机僧侣们都要每天念下面这个咒语数百遍：<br>“一个汉字算两个英文字符！一个汉字算两个英文字符……” </p>
+<p>因为当时各个国家都像中国这样搞出一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码，连大陆和台湾这样只相隔了150海里，使用着同一种语言的兄弟地区，也分别采用了不同的 DBCS 编码方案——当时的中国人想让电脑显示汉字，就必须装上一个”汉字系统”，专门用来处理汉字的显示、输入的问题，但是那个台湾的愚昧封建人士写的算命程序 就必须加装另一套支持 BIG5 编码的什么”倚天汉字系统”才可以用，装错了字符系统，显示就会乱了套！这怎么办？而且世界民族之林中还有那些一时用不上电脑的穷苦人民，他们的文字又怎 么办？<br>真是计算机的巴比伦塔命题啊！<br>正在这时，大天使加百列及时出现了——一个叫 ISO （国际标谁化组织）的国际组织决定着手解决这个问题。他们采用的方法很简单：废了所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称 UCS, 俗称 “UNICODE”。<br>UNICODE 开始制订时，计算机的存储器容量极大地发展了，空间再也不成为问题了。于是 ISO 就直接规定必须用两个字节，也就是16位来统一表示所有的字符，对于ascii里的那些“半角”字符，UNICODE 包持其原编码不变，只是将其长度由原来的8位扩展为16位，而其他文化和语言的字符则全部重新统一编码。由于”半角”英文符号只需要用到低8位，所以其高8位永远是0，因此这种大气的方案在保存英文文本时会多浪费一倍的空间。<br>这时候，从旧社会里走过来的程序员开始发现一个奇怪的现象：他们的 strlen函数靠不住了，一个汉字不再是相当于两个字符了，而是一个！是的，从 UNICODE 开始，无论是半角的英文字母，还是全角的汉字，它们都是统一的”一个字符”！同时，也都是统一的”两个字节”，请注意”字符”和”字节”两个术语的不同， “字节”是一个8位的物理存贮单元，而“字符”则是一个文化相关的符号。在UNICODE 中，一个字符就是两个字节。一个汉字算两个英文字符的时代已经快过去了。<br>从前多种字符集存在时，那些做多语言软件的公司遇上过很大麻烦，他们为了在不同的国家销售同一套软件，就不得不在区域化软件时也加持那个双字节字符集咒语，不仅要处处小心不要搞错，还要把软件中的文字在不同的字符集中转来转去。UNICODE 对于他们来说是一个很好的一揽子解决方案，于是从 Windows NT 开始，MS 趁机把它们的操作系统改了一遍，把所有的核心代码都改成了用 UNICODE 方式工作的版本，从这时开始，WINDOWS 系统终于无需要加装各种本土语言系统，就可以显示全世界上所有文化的字符了。<br>但是，UNICODE 在制订时没有考虑与任何一种现有的编码方案保持兼容，这使得 GBK 与UNICODE 在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从UNICODE编码和另一种编码进行转换，这种转换必须通过查表来进行。<br>如前所述，UNICODE 是用两个字节来表示为一个字符，他总共可以组合出65535不同的字符，这大概已经可以覆盖世界上所有文化的符号。如果还不够也没有关系，ISO已经准备 了UCS-4方案，说简单了就是四个字节来表示一个字符，这样我们就可以组合出21亿个不同的字符出来（最高位有其他用途），这大概可以用到银河联邦成立 那一天吧！ </p>
+<p>UNICODE 来到时，一起到来的还有计算机网络的兴起，UNICODE 如何在网络上传输也是一个必须考虑的问题，于是面向传输的众多 UTF（UCS Transfer Format）标准出现了，顾名思义，UTF8就是每次8个位传输数据，而UTF16就是每次16个位，只不过为了传输时的可靠性，从 UNICODE 到 UTF 时并不是直接的对应，而是要过一些算法和规则来转换。<br>受到过网络编程加持的计算机僧侣们都知道，在网络里传递信息时有一个很重要的问题，就是对于数据高低位的解读方式，一些计算机是采用低位先发送的方法，例如我们PC机采用的 INTEL 架构，而另一些是采用高位先发送的方式，在网络中交换数据时，为了核对双方对于高低位的认识是否是一致的，采用了一种很简便的方法，就是在文本流的开始时向对方发送一个标志符——如果之后的文本是高位在位，那就发送”FEFF”，反之，则发送”FFFE”。不信你可以用二进制方式打开一个UTF-X格式的文件，看看开头两个字节是不是这两个字节？ </p>
+<p>讲到这里，我们再顺便说说一个很著名的奇怪现象：当你在 windows 的记事本里新建一个文件，输入”联通”两个字之后，保存，关闭，然后再次打开，你会发现这两个字已经消失了，代之的是几个乱码！呵呵，有人说这就是联通之所以拼不过移动的原因。<br>其实这是因为GB2312编码与UTF8编码产生了编码冲撞的原因。<br>从网上引来一段从UNICODE到UTF8的转换规则： </p>
+<p>Unicode<br>UTF-8 </p>
+<p>0000 - 007F<br>0xxxxxxx </p>
+<p>0080 - 07FF<br>110xxxxx 10xxxxxx </p>
+<p>0800 - FFFF<br>1110xxxx 10xxxxxx 10xxxxxx </p>
+<p>例如”汉”字的Unicode编码是6C49。6C49在0800-FFFF之间，所以要用3字节模板：1110xxxx 10xxxxxx 10xxxxxx。将6C49写成二进制是：0110 1100 0100 1001，将这个比特流按三字节模板的分段方法分为0110 110001 001001，依次代替模板中的x，得到：1110-0110 10-110001 10-001001，即E6 B1 89，这就是其UTF8的编码。<br>而当你新建一个文本文件时，记事本的编码默认是ANSI, 如果你在ANSI的编码输入汉字，那么他实际就是GB系列的编码方式，在这种编码下，”联通”的内码是：<br>c1 1100 0001<br>aa 1010 1010<br>cd 1100 1101<br>a8 1010 1000<br>注意到了吗？第一二个字节、第三四个字节的起始部分的都是”110”和”10”，正好与UTF8规则里的两字节模板是一致的，于是再次打开记事本时，记事本就误认为这是一个UTF8编码的文件，让我们把第一个字节的110和第二个字节的10去掉，我们就得到了”00001 101010”，再把各位对齐，补上前导的0，就得到了”0000 0000 0110 1010”，不好意思，这是UNICODE的006A，也就是小写的字母”j”，而之后的两字节用UTF8解码之后是0368，这个字符什么也不是。这就是只有”联通”两个字的文件没有办法在记事本里正常显示的原因。<br>而如果你在”联通”之后多输入几个字，其他的字的编码不见得又恰好是110和10开始的字节，这样再次打开时，记事本就不会坚持这是一个utf8编码的文件，而会用ANSI的方式解读之，这时乱码又不出现了。 </p>
+<p>好了，终于可以回答NICO的问题了，在数据库里，有n前缀的字串类型就是UNICODE类型，这种类型中，固定用两个字节来表示一个字符，无论这个字符是汉字还是英文字母，或是别的什么。<br>如果你要测试”abc汉字”这个串的长度，在没有n前缀的数据类型里，这个字串是7个字符的长度，因为一个汉字相当于两个字符。而在有n前缀的数据类型里，同样的测试串长度的函数将会告诉你是5个字符，因为一个汉字就是一个字符。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Profile</title>
+    <url>/2020/07/06/Profile/</url>
+    <content><![CDATA[<h3 id="环境变量：-etc-profile-etc-bashrc-profile-bashrc"><a href="#环境变量：-etc-profile-etc-bashrc-profile-bashrc" class="headerlink" title="环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc"></a>环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc</h3><p>一、环境变量介绍：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在Linux系统中，环境变量按照其作用范围不同大致可以分为系统级环境变量和用户级环境变量。</span><br><span class="line"></span><br><span class="line">系统级环境变量：每一个登录到系统的用户都能够读取到系统级的环境变量；</span><br><span class="line">用户级环境变量：每一个登录到系统的用户只能够读取属于自己的用户级的环境变量；</span><br><span class="line">自然而然地，环境变量的配置文件也相应的被分成了系统级和用户级两种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　<br>二、系统级：</p>
+<p>1、/etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动后,第一个用户登录时运行,并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置，使用该文件配置的环境变量</span><br><span class="line">将应用于登录到系统的每一个用户。</span><br><span class="line"></span><br><span class="line">提示：在Linux系统中，使用以下命令可以使配置文件立刻生效。</span><br><span class="line"></span><br><span class="line">　　source &#x2F;etc&#x2F;profile</span><br><span class="line">　　echo $PATH</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>2、/etc/bashrc（Ubuntu和Debian中是/etc/bash.bashrc）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在 bash shell 打开时运行，修改该文件配置的环境变量将会影响所有用户使用的bash shell。</span><br><span class="line">注意：这里的bash shell有不同的类别，不同的类别所使用的环境变量配置文件也有所不同。</span><br><span class="line">一般情况下，非登录shell不会执行任何profile文件，非交互shell模式不会执行任何bashrc文件。</span><br></pre></td></tr></table></figure>
+<p>3、/etc/environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在系统启动时运行，用于配置与系统运行相关但与用户无关的环境变量，修改该文件配置的环境变量将影响全局。</span><br></pre></td></tr></table></figure>
+
+
+<p>三、用户级：</p>
+<p>1、~/.profile（推荐首选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.profile: executed by Bourne-compatible login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时执行，每个用户都可以使用该文件来配置专属于自己使用的shell信息。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2、~/.bashrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bashrc: executed by bash(1) for non-login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时以及每次打开新的shell时该文件都将被读取，不推荐在这里配置用户专用的环境变量，因为每开一个shell，</span><br><span class="line">该文件都会被读取一次，效率肯定受影响。</span><br><span class="line">生效用：source</span><br><span class="line">bashrc和profile的差异</span><br><span class="line">从上面的英文描述可以知道，bashrc和profile的差异在于：</span><br><span class="line"></span><br><span class="line">　　注意：通常我们修改bashrc,有些linux的发行版本不一定有profile这个文件；</span><br><span class="line"></span><br><span class="line">1. bashrc 是在系统启动后就会自动运行。</span><br><span class="line">2. profile 是在用户登录后才会运行。</span><br><span class="line">3. 进行设置后，可运用source bashrc命令更新bashrc，也可运用source profile命令更新profile。</span><br><span class="line">4. &#x2F;etc&#x2F;profile中设定的变量(全局)的可以作用于任何用户，而~&#x2F;.bashrc等中设定的变量(局部)只能继承</span><br><span class="line">&#x2F;etc&#x2F;profile中的变量，他们是&quot;父子&quot;关系。</span><br></pre></td></tr></table></figure>
+<p>3、~/.bash_profile 或 ~./bash_login</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.bash_profile or ~.&#x2F;bash_login - If one of these file exist, bash executes it rather then &quot;~&#x2F;.profile&quot;</span><br><span class="line">when it is started as a login shell. (Bash will prefer &quot;~&#x2F;.bash_profile&quot; to &quot;~&#x2F;.bash_login&quot;).</span><br><span class="line">However, these files won&#39;t influence a graphical session by default.</span><br><span class="line"></span><br><span class="line">以上是ubuntu官网给出的关于~&#x2F;.bash_profile 和 ~.&#x2F;bash_login 的说明，翻译为中文：</span><br><span class="line">~&#x2F;.bash_profile 或 ~.&#x2F;bash_login -</span><br><span class="line">如果有其中的一个文件存在的话, 当启动的是一个登录shell时，Bash 会执行该文件而不会执行~&#x2F;.profile ；</span><br><span class="line">如果两个文件都存在的话，Bash 将会优先执行~&#x2F;.bash_profile 而不是~&#x2F;.bash_login ；</span><br><span class="line">然而, 默认情况下，这些文件不会影响图形会话。</span><br></pre></td></tr></table></figure>
+<p>4、~/.bash_logout</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">当每次退出系统(退出bash shell)时执行该文件。</span><br><span class="line"></span><br><span class="line">注意：Linux系统使用 $VARIABLE_NAME 访问环境变量，多个环境变量之间使用 “:”分隔，Windows系统使用 </span><br><span class="line">%VARIABLE_NAME% 访问环境变量，多个环境变量之间使用 ; 分隔。</span><br></pre></td></tr></table></figure>
+<p>四、执行顺序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般情况下，Linux加载环境变量配置文件的执行顺序为：</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; &#x2F;etc&#x2F;bashrc</span><br><span class="line">&#x3D;&#x3D;&gt; ~&#x2F;.bash_logout</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>JDK</title>
+    <url>/2020/07/06/JDK/</url>
+    <content><![CDATA[<ul>
+<li><p>1、下载JDK</p>
+</li>
+<li><p>2、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
+</li>
+<li><p>3、解压源码包<br>通过终端在/usr/local目录下新建java文件夹，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>然后将下载到压缩包拷贝到java文件夹中，命令行：<br>进入jdk源码包所在目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp jdk-8u25-linux-x64.tar.gz &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>然后进入java目录，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;java</span><br></pre></td></tr></table></figure>
+<p>解压压缩包，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo tar xvf jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>然后可以把压缩包删除，命令行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rm jdk-8u25-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>4、设置jdk环境变量<br>这里采用全局设置方法，它是所有用户的共用的环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo gedit ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+<p>打开之后在末尾添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;java&#x2F;jdk1.8.0_25  </span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>vscode开发go</title>
+    <url>/2020/06/13/vscode%E5%BC%80%E5%8F%91go/</url>
+    <content><![CDATA[<ul>
+<li><p>设置go模块代理</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;goproxy.cn&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows/Linux平台按下Ctrl+Shift+P，Mac平台按Command+Shift+P</p>
+</li>
+<li><p>输入Go:Install/Update Tools</p>
+</li>
+<li><p>全选安装</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>linux环境安装go</title>
+    <url>/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/</url>
+    <content><![CDATA[<ul>
+<li>下载go <a href="https://studygolang.com/dl" target="_blank" rel="noopener">https://studygolang.com/dl</a></li>
+<li>配置环境变量   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;profile或者用户目录下的.profile文件中配置环境变量</span><br><span class="line">区别是在&#x2F;etc&#x2F;profile下配置对所有用户起作用</span><br><span class="line">.profile中配置只对当前用户起作用</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;goProjects </span><br><span class="line">export GOBIN&#x3D;$GOPATH&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOPATH&#x2F;bin</span><br><span class="line"></span><br><span class="line">GOROOT设置golang的安装位置，我们解压到了&#x2F;usr&#x2F;local&#x2F;目录，该目录下的go&#x2F;文件夹一定是go的环境的根目录，</span><br><span class="line">就是打开go目录后别再有一个go&#x2F;目录</span><br><span class="line"></span><br><span class="line">GOBIN目录是执行 go install 后生成可执行文件的目录</span><br><span class="line"></span><br><span class="line">GOPATH是我们的工作目录，一般我们设置到用户目录下，这个要根据你电脑的实际情况去配置</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>from:<a href="https://www.jianshu.com/p/33cf4f41cae9" target="_blank" rel="noopener">https://www.jianshu.com/p/33cf4f41cae9</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo发布文章</title>
+    <url>/2020/04/21/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new post XXX</span><br><span class="line">npm run build</span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>docker官方php安装扩展</title>
+    <url>/2020/04/21/docker%E5%AE%98%E6%96%B9php%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<p>PHP 容器配置</p>
+<p>从官方基础版本构建,官方版本默认安装扩展,我們要添加一些其他扩展: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># PHP 容器配置</span><br><span class="line"></span><br><span class="line"># 从官方基础版本构建</span><br><span class="line">FROM php:7.2-fpm</span><br><span class="line"># 官方版本默认安装扩展: </span><br><span class="line"># Core, ctype, curl</span><br><span class="line"># date, dom</span><br><span class="line"># fileinfo, filter, ftp</span><br><span class="line"># hash</span><br><span class="line"># iconv</span><br><span class="line"># json</span><br><span class="line"># libxml</span><br><span class="line"># mbstring, mysqlnd</span><br><span class="line"># openssl</span><br><span class="line"># pcre, PDO, pdo_sqlite, Phar, posix</span><br><span class="line"># readline, Reflection, session, SimpleXML, sodium, SPL, sqlite3, standard</span><br><span class="line"># tokenizer</span><br><span class="line"># xml, xmlreader, xmlwriter</span><br><span class="line"># zlib</span><br><span class="line"></span><br><span class="line"># 1.0.2 增加 bcmath, calendar, exif, gettext, sockets, dba, </span><br><span class="line"># mysqli, pcntl, pdo_mysql, shmop, sysvmsg, sysvsem, sysvshm 扩展</span><br><span class="line">RUN docker-php-ext-install -j$(nproc) bcmath calendar exif gettext \</span><br><span class="line">sockets dba mysqli pcntl pdo_mysql shmop sysvmsg sysvsem sysvshm</span><br><span class="line"></span><br><span class="line"># 1.0.3 增加 bz2 扩展, 读写 bzip2（.bz2）压缩文件</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libbz2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) bz2</span><br><span class="line"></span><br><span class="line"># 1.0.4 增加 enchant 扩展, 拼写检查库</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libenchant-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) enchant</span><br><span class="line"></span><br><span class="line"># 1.0.5 增加 GD 扩展. 图像处理</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure gd --with-freetype-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; --with-jpeg-dir&#x3D;&#x2F;usr&#x2F;include&#x2F; &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gd</span><br><span class="line"></span><br><span class="line"># 1.0.6 增加 gmp 扩展, GMP</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libgmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) gmp</span><br><span class="line"></span><br><span class="line"># 1.0.7 增加 soap wddx xmlrpc tidy xsl 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libxml2-dev libtidy-dev libxslt1-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) soap wddx xmlrpc tidy xsl</span><br><span class="line"></span><br><span class="line"># 1.0.8 增加 zip 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libzip-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) zip</span><br><span class="line"></span><br><span class="line"># 1.0.9 增加 snmp 扩展</span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libsnmp-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) snmp</span><br><span class="line"></span><br><span class="line"># 1.0.10 增加 pgsql, pdo_pgsql 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpq-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pgsql pdo_pgsql</span><br><span class="line"></span><br><span class="line"># 1.0.11 增加 pspell 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libpspell-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pspell</span><br><span class="line"></span><br><span class="line"># 1.0.12 增加 recode 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends librecode-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) recode</span><br><span class="line"></span><br><span class="line"># 1.0.13 增加 PDO_Firebird 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_firebird</span><br><span class="line"></span><br><span class="line"># 1.0.14 增加 pdo_dblib 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends freetds-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure pdo_dblib --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) pdo_dblib</span><br><span class="line"></span><br><span class="line"># 1.0.15 增加 ldap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libldap2-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure ldap --with-libdir&#x3D;lib&#x2F;x86_64-linux-gnu &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) ldap</span><br><span class="line"></span><br><span class="line"># 1.0.16 增加 imap 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-configure imap --with-kerberos --with-imap-ssl &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) imap</span><br><span class="line"></span><br><span class="line"># 1.0.17 增加 interbase 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends firebird-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) interbase</span><br><span class="line"></span><br><span class="line"># 1.0.18 增加 intl 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libicu-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">docker-php-ext-install -j$(nproc) intl</span><br><span class="line"></span><br><span class="line"># 1.0.19 增加 mcrypt 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends libmcrypt-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install mcrypt-1.0.1 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable mcrypt</span><br><span class="line"></span><br><span class="line"># 1.0.20 imagick 扩展</span><br><span class="line">RUN export CFLAGS&#x3D;&quot;$PHP_CFLAGS&quot; CPPFLAGS&#x3D;&quot;$PHP_CPPFLAGS&quot; LDFLAGS&#x3D;&quot;$PHP_LDFLAGS&quot; &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get install -y --no-install-recommends libmagickwand-dev &amp;&amp; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install imagick-3.4.3 &amp;&amp; \</span><br><span class="line">docker-php-ext-enable imagick</span><br><span class="line"></span><br><span class="line"># 1.0.21 增加 Memcached 扩展 </span><br><span class="line">RUN apt-get update &amp;&amp; \ </span><br><span class="line">apt-get install -y --no-install-recommends zlib1g-dev libmemcached-dev &amp;&amp; \</span><br><span class="line">rm -r &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;* &amp;&amp; \</span><br><span class="line">pecl install memcached &amp;&amp; \</span><br><span class="line">docker-php-ext-enable memcached</span><br><span class="line"></span><br><span class="line"># 1.0.22 redis 扩展</span><br><span class="line">RUN pecl install redis-4.0.1 &amp;&amp; docker-php-ext-enable redis</span><br><span class="line"></span><br><span class="line"># 1.0.23 增加 opcache 扩展 </span><br><span class="line">RUN docker-php-ext-configure opcache --enable-opcache &amp;&amp; docker-php-ext-install opcache</span><br><span class="line"></span><br><span class="line"># 1.0.24 增加 odbc, pdo_odbc 扩展 </span><br><span class="line">RUN set -ex; \</span><br><span class="line">docker-php-source extract; \</span><br><span class="line">&#123; \</span><br><span class="line">     echo &#39;# https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;php&#x2F;issues&#x2F;103#issuecomment-271413933&#39;; \</span><br><span class="line">     echo &#39;AC_DEFUN([PHP_ALWAYS_SHARED],[])dnl&#39;; \</span><br><span class="line">     echo; \</span><br><span class="line">     cat &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">&#125; &gt; temp.m4; \</span><br><span class="line">mv temp.m4 &#x2F;usr&#x2F;src&#x2F;php&#x2F;ext&#x2F;odbc&#x2F;config.m4; \</span><br><span class="line">apt-get update; \</span><br><span class="line">apt-get install -y --no-install-recommends unixodbc-dev; \</span><br><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;*; \</span><br><span class="line">docker-php-ext-configure odbc --with-unixODBC&#x3D;shared,&#x2F;usr; \</span><br><span class="line">docker-php-ext-configure pdo_odbc --with-pdo-odbc&#x3D;unixODBC,&#x2F;usr; \</span><br><span class="line">docker-php-ext-install odbc pdo_odbc; \</span><br><span class="line">docker-php-source delete</span><br><span class="line"></span><br><span class="line"># 镜像信息</span><br><span class="line">LABEL Author&#x3D;&quot;Leo&quot;</span><br><span class="line">LABEL Version&#x3D;&quot;1.0.25-fpm&quot;</span><br><span class="line">LABEL Description&#x3D;&quot;PHP FPM 7.2 镜像. All extensions.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>from：<a href="https://www.jianshu.com/p/20fcca06e27e">https://www.jianshu.com/p/20fcca06e27e</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>php安装xdebug</title>
+    <url>/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/</url>
+    <content><![CDATA[<ul>
+<li>打开<a href="https://xdebug.org/wizard" target="_blank" rel="noopener">https://xdebug.org/wizard</a></li>
+<li>输出phpinfo()</li>
+<li>粘贴到界面中</li>
+<li>按照提示操作即可（如果是多版本PHP 注意php-config）<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例：</span><br><span class="line">.&#x2F;configure --with-php-config&#x3D;&#x2F;www&#x2F;server&#x2F;php&#x2F;73&#x2F;bin&#x2F;php-config</span><br></pre></td></tr></table></figure></li>
+<li>在php.ini中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zend_extension&#x3D;xdebug.so</span><br><span class="line">xdebug.trace_output_dir&#x3D;&#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_output_dir &#x3D; &#x2F;tmp&#x2F;xdebug</span><br><span class="line">xdebug.profiler_enable &#x3D; On</span><br><span class="line">xdebug.profiler_enable_trigger &#x3D; 1</span><br><span class="line">xdebug.remote_enable&#x3D;1</span><br><span class="line">xdebug.remote_handler&#x3D;dbgp</span><br><span class="line">xdebug.remote_mode&#x3D;req</span><br><span class="line">xdebug.remote_host&#x3D;192.168.33.1</span><br><span class="line">xdebug.remote_port&#x3D;9008</span><br><span class="line">xdebug.idekey&#x3D;&quot;PHPSTORM&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo使用</title>
+    <url>/2020/01/28/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<ul>
+<li>官方文档地址（中文）：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></li>
+</ul>
+<p>在github上建立静态博客</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、github上新建仓库：&lt;user-name&gt;.github.io</span><br><span class="line">2、全局安装hexo：npm install -g hexo</span><br><span class="line">3、初始化项目：hexo init</span><br><span class="line">4、部署到github：npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+</search>

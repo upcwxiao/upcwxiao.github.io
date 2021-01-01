@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2021-01-01T02:56:53.793Z</updated>
+  <updated>2021-01-01T09:32:01.746Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,139 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git</title>
+    <link href="https://upcwxiao.github.io/2021/01/01/Git/"/>
+    <id>https://upcwxiao.github.io/2021/01/01/Git/</id>
+    <published>2021-01-01T09:18:22.000Z</published>
+    <updated>2021-01-01T09:32:01.746Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;安装git&quot;&gt;&lt;a href=&quot;#安装git&quot; class=&quot;headerlink&quot; title=&quot;安装git&quot;&gt;&lt;/a&gt;安装git&lt;/h3&gt;&lt;p&gt;Git：&lt;a href=&quot;http://git-scm.com/&quot;&gt;http://git-scm.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows版下载地址：&lt;a href=&quot;https://git-for-windows.github.io/&quot;&gt;https://git-for-windows.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;基本操作&quot;&gt;&lt;a href=&quot;#基本操作&quot; class=&quot;headerlink&quot; title=&quot;基本操作&quot;&gt;&lt;/a&gt;基本操作&lt;/h3&gt;&lt;p&gt;1、创建版本库： &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2、提交代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add file1.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m &amp;quot;提交代码&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3、查看代码状态：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git status&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="辅助工具" scheme="https://upcwxiao.github.io/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Git" scheme="https://upcwxiao.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax</title>
+    <link href="https://upcwxiao.github.io/2021/01/01/Ajax/"/>
+    <id>https://upcwxiao.github.io/2021/01/01/Ajax/</id>
+    <published>2021-01-01T08:58:23.000Z</published>
+    <updated>2021-01-01T09:17:14.267Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;AJAX&quot;&gt;&lt;a href=&quot;#AJAX&quot; class=&quot;headerlink&quot; title=&quot;AJAX&quot;&gt;&lt;/a&gt;AJAX&lt;/h3&gt;&lt;p&gt;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。&lt;br&gt;在应用时主要是创建XMLHttpRequest对象，调用指定服务地址。&lt;br&gt;但是IE中各个版本支持的不太一样,所以在创建次对象时可能要特殊处理下。&lt;br&gt;一般如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function createXMLHttpRequest() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var xmlhttp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    try &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        xmlhttp &amp;#x3D; new XMLHttpRequest(); &amp;#x2F;&amp;#x2F;ie7及以上，其他浏览器   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; catch (e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            xmlhttp &amp;#x3D; new ActiveXObject(&amp;quot;Msxml2.XMLHTTP&amp;quot;); &amp;#x2F;&amp;#x2F;ie6     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; catch (e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            try &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                xmlhttp &amp;#x3D; new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); &amp;#x2F;&amp;#x2F;ie6以下    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125; catch (e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                throw &amp;quot;创建AJAX对象失败！&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return xmlhttp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var xmlhttp &amp;#x3D; createXMLHttpRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.open(&amp;quot;GET&amp;quot;, &amp;quot;http:&amp;#x2F;&amp;#x2F;localhost:8080&amp;#x2F;SimpleBlog&amp;#x2F;AjaxTest&amp;quot;, true);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.send(null);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.onreadystatechange &amp;#x3D; function (result) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (xmlhttp.readyState &amp;#x3D;&amp;#x3D; 4 &amp;amp;&amp;amp; xmlhttp.status &amp;#x3D;&amp;#x3D; 200) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alter(result.test);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="语言" scheme="https://upcwxiao.github.io/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="JS" scheme="https://upcwxiao.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重置样式</title>
+    <link href="https://upcwxiao.github.io/2021/01/01/%E9%87%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F/"/>
+    <id>https://upcwxiao.github.io/2021/01/01/%E9%87%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F/</id>
+    <published>2021-01-01T08:56:26.000Z</published>
+    <updated>2021-01-01T09:17:43.182Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;css 重置样式：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="语言" scheme="https://upcwxiao.github.io/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="Css" scheme="https://upcwxiao.github.io/tags/Css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hbase</title>
+    <link href="https://upcwxiao.github.io/2021/01/01/Hbase/"/>
+    <id>https://upcwxiao.github.io/2021/01/01/Hbase/</id>
+    <published>2021-01-01T08:48:37.000Z</published>
+    <updated>2021-01-01T09:19:33.541Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;下载安装包&quot;&gt;&lt;a href=&quot;#下载安装包&quot; class=&quot;headerlink&quot; title=&quot;下载安装包&quot;&gt;&lt;/a&gt;下载安装包&lt;/h3&gt;&lt;p&gt;从 Hbase 官网下载页面下载安装包, 然后：&lt;/p&gt;
+&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+    
+      <category term="DB" scheme="https://upcwxiao.github.io/categories/DB/"/>
+    
+    
+      <category term="Hbase" scheme="https://upcwxiao.github.io/tags/Hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>清除浮动</title>
+    <link href="https://upcwxiao.github.io/2021/01/01/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
+    <id>https://upcwxiao.github.io/2021/01/01/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</id>
+    <published>2021-01-01T08:45:22.000Z</published>
+    <updated>2021-01-01T09:17:47.330Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;.clearfix:after { content:”\200B”; display:block; height:0; clear:both; }&lt;br&gt;.clearfix
+        
+      
+    
+    </summary>
+    
+    
+      <category term="语言" scheme="https://upcwxiao.github.io/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="Css" scheme="https://upcwxiao.github.io/tags/Css/"/>
+    
+  </entry>
   
   <entry>
     <title>JS时间戳</title>
@@ -436,65 +569,6 @@
       <category term="Docker" scheme="https://upcwxiao.github.io/tags/Docker/"/>
     
       <category term="Php" scheme="https://upcwxiao.github.io/tags/Php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php安装xdebug</title>
-    <link href="https://upcwxiao.github.io/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/"/>
-    <id>https://upcwxiao.github.io/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/</id>
-    <published>2020-04-05T11:21:45.000Z</published>
-    <updated>2021-01-01T03:00:07.259Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;打开&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="环境" scheme="https://upcwxiao.github.io/categories/%E7%8E%AF%E5%A2%83/"/>
-    
-    
-      <category term="Php" scheme="https://upcwxiao.github.io/tags/Php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo使用</title>
-    <link href="https://upcwxiao.github.io/2020/01/28/hexo%E4%BD%BF%E7%94%A8/"/>
-    <id>https://upcwxiao.github.io/2020/01/28/hexo%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-01-28T06:46:14.000Z</published>
-    <updated>2021-01-01T02:50:03.901Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;官方文档地址（中文）：&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot;&gt;https://hexo.io/zh-cn/docs/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在github上建立静态博客&lt;/p&gt;
-&lt;figure
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://upcwxiao.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://upcwxiao.github.io/tags/Hexo/"/>
     
   </entry>
   

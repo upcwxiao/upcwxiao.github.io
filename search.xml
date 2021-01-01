@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git</title>
+    <url>/2021/01/01/Git/</url>
+    <content><![CDATA[<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>Git：<a href="http://git-scm.com/">http://git-scm.com/</a></p>
+<p>windows版下载地址：<a href="https://git-for-windows.github.io/">https://git-for-windows.github.io/</a></p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>1、创建版本库： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>2、提交代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add file1.txt</span><br><span class="line">git commit -m &quot;提交代码&quot;</span><br></pre></td></tr></table></figure>
+<p>3、查看代码状态：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>4、查看修改内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git diff file1.txt</span><br></pre></td></tr></table></figure>
+<p>5、版本回退：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD^（当前版本）</span><br><span class="line">或</span><br><span class="line">git reset --hard 版本ID</span><br></pre></td></tr></table></figure>
+<p>6、查看日志：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br><span class="line">或</span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<p>7、撤销修改：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -- file</span><br></pre></td></tr></table></figure>
+<p>8、撤销暂存区修改内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></table></figure>
+<p>9、创建分支：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -b dev</span><br><span class="line">或</span><br><span class="line">git branch dev</span><br><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+<p>10、合并分支：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<p>11、分支的一些操作分支：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看分支：git branch</span><br><span class="line">创建分支：git branch</span><br><span class="line">切换分支：git checkout</span><br><span class="line">创建+切换分支：git checkout -b</span><br><span class="line">合并某分支到当前分支：git merge</span><br><span class="line">删除分支：git branch -d</span><br></pre></td></tr></table></figure>
+<p>12、分支的一些处理：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查看远程库信息：git remote -v；</span><br><span class="line">从本地推送分支：git push origin branch-name（如果推送失败，先用git pull抓取远程的新提交）；</span><br><span class="line">在本地创建和远程分支对应的分支：git checkout -b branch-name origin&#x2F;branch-name，本地和远程分支的名称最好一致；</span><br><span class="line">建立本地分支和远程分支的关联：git branch --set-upstream branch-name origin&#x2F;branch-name；</span><br><span class="line">从远程抓取分支：git pull，如果有冲突，要先处理冲突。</span><br></pre></td></tr></table></figure>
+<h3 id="乱码问题"><a href="#乱码问题" class="headerlink" title="乱码问题"></a>乱码问题</h3><p>在windows下还可以安装 tortoiseGit (这个也是大多数人推荐的，可以直接解决乱码问题。)。提交代码也做了些许的改变，更接近tortoisesvn了。其中的功能如果对git有了解的话看一眼应该就能猜到作用了。</p>
+<p>下载地址:<a href="http://tortoisegit.org/">http://tortoisegit.org/</a></p>
+<p>Git乱码问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1, &#x2F;etc&#x2F;gitconfig：</span><br><span class="line">[gui]</span><br><span class="line">encoding &#x3D; utf-8 #代码库统一用urf-8,在git gui中可以正常显示中文</span><br><span class="line">[i18n]</span><br><span class="line">commitencoding &#x3D; GB2312 #log编码，window下默认gb2312,声明后发到服务器才不会乱码</span><br><span class="line">[svn]</span><br><span class="line">pathnameencoding &#x3D; GB2312 #支持中文路径</span><br><span class="line">注意此处的GB2312</span><br><span class="line"></span><br><span class="line">2, &#x2F;etc&#x2F;git-completion.bash:</span><br><span class="line">alias ls&#x3D;&#39;ls --show-control-chars --color&#x3D;auto&#39; #ls能够正常显示中文</span><br><span class="line"></span><br><span class="line">3, &#x2F;etc&#x2F;inputrc:</span><br><span class="line">set output-meta on #bash中可以正常输入中文</span><br><span class="line"></span><br><span class="line">set convert-meta off</span><br><span class="line"></span><br><span class="line">4, &#x2F;etc&#x2F;profile:</span><br><span class="line">export LESSHARSET&#x3D;utf-8 # 命令不像其它一样，条从头滚到底，它会恰当地停在第一页，按键再往后翻页。这是通过将送给处理实现的。以上即是设置的字符编码，使得git log可以正常显示中文。</span><br><span class="line"></span><br><span class="line">上述gb2312如果还不行，可以改为gbk，试一下。</span><br></pre></td></tr></table></figure>
+<p>git官方文档：<a href="http://git-scm.com/book/zh/v2">http://git-scm.com/book/zh/v2</a></p>
+<p>这篇文章简单而又全面的讲解了git的使用。</p>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+]]></content>
+      <categories>
+        <category>辅助工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ajax</title>
+    <url>/2021/01/01/Ajax/</url>
+    <content><![CDATA[<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br>在应用时主要是创建XMLHttpRequest对象，调用指定服务地址。<br>但是IE中各个版本支持的不太一样,所以在创建次对象时可能要特殊处理下。<br>一般如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function createXMLHttpRequest() &#123;</span><br><span class="line">    var xmlhttp;</span><br><span class="line">    try &#123;</span><br><span class="line">        xmlhttp &#x3D; new XMLHttpRequest(); &#x2F;&#x2F;ie7及以上，其他浏览器   </span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            xmlhttp &#x3D; new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); &#x2F;&#x2F;ie6     </span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                xmlhttp &#x3D; new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); &#x2F;&#x2F;ie6以下    </span><br><span class="line">            &#125; catch (e) &#123;</span><br><span class="line">                throw &quot;创建AJAX对象失败！&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return xmlhttp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var xmlhttp &#x3D; createXMLHttpRequest();</span><br><span class="line">xmlhttp.open(&quot;GET&quot;, &quot;http:&#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest&quot;, true);</span><br><span class="line">xmlhttp.send(null);</span><br><span class="line">xmlhttp.onreadystatechange &#x3D; function (result) &#123;</span><br><span class="line">    if (xmlhttp.readyState &#x3D;&#x3D; 4 &amp;&amp; xmlhttp.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alter(result.test);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>但是浏览器再执行javascript代码时，有个著名的同源策略，这使得跨域请求就不是那么方便了。<br>那一般都是用什么方式支持跨域呢？<br>1、通过中间代理服务器，获取要跨域请求的数据。<br>2、通过iframe内嵌带请求域的页面，来解决跨域访问问题。<br>3、通过jsonp方式。<br>4、不过现在已经提出了XMLHttpRequest Level2(XHR2)允许跨域请求，不过要在server的返回头中显示声明允许跨域请求（浏览器的支持情况：<a href="http://caniuse.com/#feat=xhr2）。">http://caniuse.com/#feat=xhr2）。</a></p>
+<p>下面简单说下jsonp与xtr2。</p>
+<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><p>jsonp简单的说就是利用script标签来实现跨域请求的调用，因为浏览器中脚本的加载是不受同源策略影响的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function get() &#123;</span><br><span class="line">    var url &#x3D; &#39;http: &#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest?callback&#x3D;callback&#39;;   </span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.setAttribute(&quot;type&quot;, &quot;text&#x2F;javascript&quot;);</span><br><span class="line">    script.src &#x3D; url;</span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function callback(va) &#123;</span><br><span class="line">    alert(va.test);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务端（java）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">boolean jsonP &#x3D; false;</span><br><span class="line">String cb &#x3D; this.request.getParameter(&quot;callback&quot;);</span><br><span class="line">if (cb !&#x3D; null) &#123;</span><br><span class="line">    jsonP &#x3D; true;</span><br><span class="line">    response.setContentType(&quot;text&#x2F;javascript&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    response.setContentType(&quot;application&#x2F;x-json&quot;);</span><br><span class="line">&#125;</span><br><span class="line">PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">if (jsonP) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        out.println(cb + &quot;(&#123;&quot;test &quot;:&quot;1&quot;&#125;)&quot;);</span><br><span class="line">        out.flush();</span><br><span class="line">        out.close();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        throw e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以实现跨域调用了。</p>
+<p>而我们经常用的jquery已经实现了此类方式的封装，使用起来更简单。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(document).ready(function () &#123;</span><br><span class="line">  $(&#39;#jqueryajax &#39;).bind(&#39;click&#39;, function () &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      type: &#39;&#39;</span><br><span class="line">      get &#39;&#39;,</span><br><span class="line">      async: false,</span><br><span class="line">      url: &#39;&#39;</span><br><span class="line">      http: &#39;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest1&#39;,</span><br><span class="line">      dataType: &#39;jsonp&#39;,</span><br><span class="line">      jsonp: &#39;callback&#39;,</span><br><span class="line">      success: function (json) &#123;</span><br><span class="line">          alert(json.result);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: function () &#123;</span><br><span class="line">          alert(&#39;fail&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>服务端（java）： 我用了struts是这样写的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class AjaxTest1 extends ActionSupport &#123;</span><br><span class="line"></span><br><span class="line">  private String result;</span><br><span class="line">  public String getResult() &#123;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public String execute() &#123;</span><br><span class="line"></span><br><span class="line">    this.result &#x3D; &quot;1&quot;;</span><br><span class="line">    return &quot;jqueryajax&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="xtr2："><a href="#xtr2：" class="headerlink" title="xtr2："></a>xtr2：</h3><p>这个就更简单了,直接创建调用即可。 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function createCORSRequest(method, url) &#123;</span><br><span class="line">  var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">  if (&#39;withCredentials&#39; in xhr) &#123;</span><br><span class="line">    xhr.open(method, url, true);</span><br><span class="line">  &#125; else if (typeof XDomainRequest !&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">    xhr &#x3D; new XDomainRequest();</span><br><span class="line">    xhr.open(method, url);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    xhr &#x3D; null;</span><br><span class="line">  &#125;</span><br><span class="line">  return xhr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function xhr2() &#123;</span><br><span class="line">  var request &#x3D; createCORSRequest(&#39;GET&#39;, &#39;http: &#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest1&#39;);</span><br><span class="line">  if (request) &#123;</span><br><span class="line">    request.onload &#x3D; function () &#123;</span><br><span class="line">      alert(request.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">    request.onerror &#x3D; function (e) &#123;</span><br><span class="line">      alert(&#39;error&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    request.send();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>其实只要在返回response中设置 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">httpResponse.addHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); </span><br></pre></td></tr></table></figure>
+<p>即可。</p>
+]]></content>
+      <categories>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>重置样式</title>
+    <url>/2021/01/01/%E9%87%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F/</url>
+    <content><![CDATA[<p>css 重置样式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">	overflow-x: auto;</span><br><span class="line">	overflow-y: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body, dl, dt, dd, ul, ol, li, pre, form, fieldset, input, p, blockquote, th, td &#123;</span><br><span class="line">	font-weight: 400;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h1, h2, h3, h4, h4, h5 &#123;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body &#123;</span><br><span class="line">	background-color: #FFFFFF;</span><br><span class="line">	color: #666666;</span><br><span class="line">	font-family: Helvetica,Arial,sans-serif;</span><br><span class="line">	font-size: 12px;</span><br><span class="line">	padding: 0 10px;</span><br><span class="line">	text-align: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">select &#123;</span><br><span class="line">	font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">table &#123;</span><br><span class="line">	border-collapse: collapse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fieldset, img &#123;</span><br><span class="line">	border: 0 none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fieldset &#123;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fieldset p &#123;</span><br><span class="line">	margin: 0;</span><br><span class="line">	padding: 0 0 0 8px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">legend &#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">address, caption, em, strong, th, i &#123;</span><br><span class="line">	font-style: normal;</span><br><span class="line">	font-weight: 400;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">table caption &#123;</span><br><span class="line">	margin-left: -1px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hr &#123;</span><br><span class="line">	border-bottom: 1px solid #FFFFFF;</span><br><span class="line">	border-top: 1px solid #E4E4E4;</span><br><span class="line">	border-width: 1px 0;</span><br><span class="line">	clear: both;</span><br><span class="line">	height: 2px;</span><br><span class="line">	margin: 5px 0;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ol, ul &#123;</span><br><span class="line">	list-style-image: none;</span><br><span class="line">	list-style-position: outside;</span><br><span class="line">	list-style-type: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">caption, th &#123;</span><br><span class="line">	text-align: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">q:before, q:after, blockquote:before, blockquote:after &#123;</span><br><span class="line">	content: &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>Css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hbase</title>
+    <url>/2021/01/01/Hbase/</url>
+    <content><![CDATA[<h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p>从 Hbase 官网下载页面下载安装包, 然后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xfz hbase-0.94.2.tar.gz</span><br><span class="line">cd hbase-0.94.2</span><br><span class="line">chmod ugo+x .&#x2F;bin&#x2F;*.sh</span><br><span class="line">注意, 要修改 bin&#x2F; 目录下的脚本的的权限, 不然启动出错。</span><br></pre></td></tr></table></figure>
+<h3 id="配置-hbase-env-sh-和-hbase-default-xml"><a href="#配置-hbase-env-sh-和-hbase-default-xml" class="headerlink" title="配置 hbase-env.sh 和 hbase-default.xml"></a>配置 hbase-env.sh 和 hbase-default.xml</h3><p>两个配置文件中的一个 hbase-env.sh 已经存在于 conf/ 目录下, 但 hbase-default.xml 并不在 conf/ 目录, 需要从 ./src/main/resources/ 目录拷贝：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp .&#x2F;src&#x2F;main&#x2F;resources&#x2F;hbase-default.xml .&#x2F;conf&#x2F;</span><br><span class="line"></span><br><span class="line">修改 hbase-env.sh 的如下几个地方：</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;home&#x2F;wx&#x2F;software&#x2F;jdk1.7.0&#x2F;</span><br><span class="line">export HBASE_CLASSPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;software&#x2F;hbase-0.94.2&#x2F;lib&#x2F;</span><br><span class="line">export HBASE_PID_DIR&#x3D;$&#123;HBASE_HOME&#125;&#x2F;tmp</span><br><span class="line">export HBASE_IDENT_STRING&#x3D;my</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>修改 hbase-default.xml 的如下几个地方：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hbase.rootdir &#x2F;home&#x2F;work&#x2F;software&#x2F;hbase-0.94.2&#x2F;data</span><br><span class="line">hbase.tmp.dir &#x2F;home&#x2F;work&#x2F;software&#x2F;hbase-0.94.2&#x2F;tmp</span><br><span class="line">hbase.defaults.for.version 0.94.2 </span><br></pre></td></tr></table></figure>
+<h3 id="启动和停止-HBase："><a href="#启动和停止-HBase：" class="headerlink" title="启动和停止 HBase："></a>启动和停止 HBase：</h3><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;bin&#x2F;start-hbase.sh</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;bin&#x2F;stop-hbase.sh</span><br><span class="line"></span><br><span class="line">如果无法正常停止, 需要手动 kill 进程.</span><br></pre></td></tr></table></figure>
+<h3 id="测试-HBase-是否成功启动："><a href="#测试-HBase-是否成功启动：" class="headerlink" title="测试 HBase 是否成功启动："></a>测试 HBase 是否成功启动：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ .&#x2F;bin&#x2F;hbase shell</span><br><span class="line">HBase Shell; enter &#39;help&#39; for list of supported commands. Type &quot;exit&quot; to leave the HBase Shell Version 0.94.2, r1395367, Sun Oct 7 19:11:01 UTC 2012 hbase(main):001:0&gt; list TABLE</span><br></pre></td></tr></table></figure>
+<h3 id="编译-HBase-Java-应用程序："><a href="#编译-HBase-Java-应用程序：" class="headerlink" title="编译 HBase Java 应用程序："></a>编译 HBase Java 应用程序：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">javac -cp .&#x2F;hbase-0.94.2.jar:.&#x2F;lib&#x2F;hadoop-core-1.0.3.jar Test.java</span><br><span class="line">java -cp .&#x2F;:.&#x2F;:.&#x2F;lib&#x2F; Test</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>DB</category>
+      </categories>
+      <tags>
+        <tag>Hbase</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>清除浮动</title>
+    <url>/2021/01/01/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
+    <content><![CDATA[<p>.clearfix:after { content:”\200B”; display:block; height:0; clear:both; }<br>.clearfix {*zoom:1;}/IE/7/6/</p>
+]]></content>
+      <categories>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>Css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS时间戳</title>
     <url>/2020/12/29/JS%E6%97%B6%E9%97%B4%E6%88%B3/</url>
     <content><![CDATA[<p>我们在开发的过程中往往遇到要生成时间戳的问题（如：典型的ajax请求缓存问题）。</p>

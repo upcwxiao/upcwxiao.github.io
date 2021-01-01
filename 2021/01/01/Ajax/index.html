@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    JS时间戳 |  WX NOTE
+    Ajax |  WX NOTE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-JS时间戳"
+  id="post-Ajax"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -56,15 +56,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  JS时间戳
+  Ajax
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/29/JS%E6%97%B6%E9%97%B4%E6%88%B3/" class="article-date">
-  <time datetime="2020-12-29T14:42:40.000Z" itemprop="datePublished">2020-12-29</time>
+      <a href="/2021/01/01/Ajax/" class="article-date">
+  <time datetime="2021-01-01T08:58:23.000Z" itemprop="datePublished">2021-01-01</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a>
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">74</span>
+            <span class="post-count">819</span>
         </span>
     </span>
 
@@ -84,27 +84,41 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>我们在开发的过程中往往遇到要生成时间戳的问题（如：典型的ajax请求缓存问题）。</p>
-<p>下面介绍三种形式：</p>
-<p>方式一： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date.parse(new Date()); 1452146458000 注：此方式获取精确到秒。</span><br></pre></td></tr></table></figure>
-<p>方式二：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(new Date()).valueOf(); 1452146523533 </span><br></pre></td></tr></table></figure>
-<p>方式三： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Date().getTime(); 1452146592498</span><br></pre></td></tr></table></figure>
+  <h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br>在应用时主要是创建XMLHttpRequest对象，调用指定服务地址。<br>但是IE中各个版本支持的不太一样,所以在创建次对象时可能要特殊处理下。<br>一般如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function createXMLHttpRequest() &#123;</span><br><span class="line">    var xmlhttp;</span><br><span class="line">    try &#123;</span><br><span class="line">        xmlhttp &#x3D; new XMLHttpRequest(); &#x2F;&#x2F;ie7及以上，其他浏览器   </span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            xmlhttp &#x3D; new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); &#x2F;&#x2F;ie6     </span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                xmlhttp &#x3D; new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); &#x2F;&#x2F;ie6以下    </span><br><span class="line">            &#125; catch (e) &#123;</span><br><span class="line">                throw &quot;创建AJAX对象失败！&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return xmlhttp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var xmlhttp &#x3D; createXMLHttpRequest();</span><br><span class="line">xmlhttp.open(&quot;GET&quot;, &quot;http:&#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest&quot;, true);</span><br><span class="line">xmlhttp.send(null);</span><br><span class="line">xmlhttp.onreadystatechange &#x3D; function (result) &#123;</span><br><span class="line">    if (xmlhttp.readyState &#x3D;&#x3D; 4 &amp;&amp; xmlhttp.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">        alter(result.test);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>但是浏览器再执行javascript代码时，有个著名的同源策略，这使得跨域请求就不是那么方便了。<br>那一般都是用什么方式支持跨域呢？<br>1、通过中间代理服务器，获取要跨域请求的数据。<br>2、通过iframe内嵌带请求域的页面，来解决跨域访问问题。<br>3、通过jsonp方式。<br>4、不过现在已经提出了XMLHttpRequest Level2(XHR2)允许跨域请求，不过要在server的返回头中显示声明允许跨域请求（浏览器的支持情况：<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=xhr2）。">http://caniuse.com/#feat=xhr2）。</a></p>
+<p>下面简单说下jsonp与xtr2。</p>
+<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><p>jsonp简单的说就是利用script标签来实现跨域请求的调用，因为浏览器中脚本的加载是不受同源策略影响的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function get() &#123;</span><br><span class="line">    var url &#x3D; &#39;http: &#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest?callback&#x3D;callback&#39;;   </span><br><span class="line">    var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    script.setAttribute(&quot;type&quot;, &quot;text&#x2F;javascript&quot;);</span><br><span class="line">    script.src &#x3D; url;</span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function callback(va) &#123;</span><br><span class="line">    alert(va.test);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务端（java）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">boolean jsonP &#x3D; false;</span><br><span class="line">String cb &#x3D; this.request.getParameter(&quot;callback&quot;);</span><br><span class="line">if (cb !&#x3D; null) &#123;</span><br><span class="line">    jsonP &#x3D; true;</span><br><span class="line">    response.setContentType(&quot;text&#x2F;javascript&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    response.setContentType(&quot;application&#x2F;x-json&quot;);</span><br><span class="line">&#125;</span><br><span class="line">PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">if (jsonP) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        out.println(cb + &quot;(&#123;&quot;test &quot;:&quot;1&quot;&#125;)&quot;);</span><br><span class="line">        out.flush();</span><br><span class="line">        out.close();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        throw e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以实现跨域调用了。</p>
+<p>而我们经常用的jquery已经实现了此类方式的封装，使用起来更简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function () &#123;</span><br><span class="line">  $(&#39;#jqueryajax &#39;).bind(&#39;click&#39;, function () &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      type: &#39;&#39;</span><br><span class="line">      get &#39;&#39;,</span><br><span class="line">      async: false,</span><br><span class="line">      url: &#39;&#39;</span><br><span class="line">      http: &#39;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest1&#39;,</span><br><span class="line">      dataType: &#39;jsonp&#39;,</span><br><span class="line">      jsonp: &#39;callback&#39;,</span><br><span class="line">      success: function (json) &#123;</span><br><span class="line">          alert(json.result);</span><br><span class="line">        &#125;,</span><br><span class="line">        error: function () &#123;</span><br><span class="line">          alert(&#39;fail&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>服务端（java）： 我用了struts是这样写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class AjaxTest1 extends ActionSupport &#123;</span><br><span class="line"></span><br><span class="line">  private String result;</span><br><span class="line">  public String getResult() &#123;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public String execute() &#123;</span><br><span class="line"></span><br><span class="line">    this.result &#x3D; &quot;1&quot;;</span><br><span class="line">    return &quot;jqueryajax&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="xtr2："><a href="#xtr2：" class="headerlink" title="xtr2："></a>xtr2：</h3><p>这个就更简单了,直接创建调用即可。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function createCORSRequest(method, url) &#123;</span><br><span class="line">  var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">  if (&#39;withCredentials&#39; in xhr) &#123;</span><br><span class="line">    xhr.open(method, url, true);</span><br><span class="line">  &#125; else if (typeof XDomainRequest !&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">    xhr &#x3D; new XDomainRequest();</span><br><span class="line">    xhr.open(method, url);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    xhr &#x3D; null;</span><br><span class="line">  &#125;</span><br><span class="line">  return xhr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function xhr2() &#123;</span><br><span class="line">  var request &#x3D; createCORSRequest(&#39;GET&#39;, &#39;http: &#x2F;&#x2F;localhost:8080&#x2F;SimpleBlog&#x2F;AjaxTest1&#39;);</span><br><span class="line">  if (request) &#123;</span><br><span class="line">    request.onload &#x3D; function () &#123;</span><br><span class="line">      alert(request.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">    request.onerror &#x3D; function (e) &#123;</span><br><span class="line">      alert(&#39;error&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    request.send();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>其实只要在返回response中设置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpResponse.addHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); </span><br></pre></td></tr></table></figure>
+<p>即可。</p>
  
       <!-- reward -->
       
@@ -169,7 +183,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://upcwxiao.github.io/2020/12/29/JS%E6%97%B6%E9%97%B4%E6%88%B3/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://upcwxiao.github.io/2021/01/01/Ajax/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -182,19 +196,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/01/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" class="article-nav-link">
+      <a href="/2021/01/01/Git/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            清除浮动
+            Git
           
         </div>
       </a>
     
     
-      <a href="/2020/12/29/Linux%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+      <a href="/2021/01/01/%E9%87%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Linux命令</div>
+        <div class="article-nav-title">重置样式</div>
       </a>
     
   </nav>

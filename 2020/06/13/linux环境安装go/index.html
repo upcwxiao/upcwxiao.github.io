@@ -65,7 +65,11 @@
     <div class="article-meta">
       <a href="/2020/06/13/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85go/" class="article-date">
   <time datetime="2020-06-13T01:56:24.000Z" itemprop="datePublished">2020-06-13</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -94,12 +98,10 @@
     <div class="article-entry" itemprop="articleBody">
        
   <ul>
-<li>下载go <a href="https://studygolang.com/dl" target="_blank" rel="noopener">https://studygolang.com/dl</a></li>
-<li>配置环境变量   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;profile或者用户目录下的.profile文件中配置环境变量</span><br><span class="line">区别是在&#x2F;etc&#x2F;profile下配置对所有用户起作用</span><br><span class="line">.profile中配置只对当前用户起作用</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;goProjects </span><br><span class="line">export GOBIN&#x3D;$GOPATH&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOPATH&#x2F;bin</span><br><span class="line"></span><br><span class="line">GOROOT设置golang的安装位置，我们解压到了&#x2F;usr&#x2F;local&#x2F;目录，该目录下的go&#x2F;文件夹一定是go的环境的根目录，</span><br><span class="line">就是打开go目录后别再有一个go&#x2F;目录</span><br><span class="line"></span><br><span class="line">GOBIN目录是执行 go install 后生成可执行文件的目录</span><br><span class="line"></span><br><span class="line">GOPATH是我们的工作目录，一般我们设置到用户目录下，这个要根据你电脑的实际情况去配置</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>下载go <a target="_blank" rel="noopener" href="https://studygolang.com/dl">https://studygolang.com/dl</a></li>
+<li>配置环境变量   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;profile或者用户目录下的.profile文件中配置环境变量</span><br><span class="line">区别是在&#x2F;etc&#x2F;profile下配置对所有用户起作用</span><br><span class="line">.profile中配置只对当前用户起作用</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;&#x2F;home&#x2F;wx&#x2F;goProjects </span><br><span class="line">export GOBIN&#x3D;$GOPATH&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin</span><br><span class="line">export PATH&#x3D;$PATH:$GOPATH&#x2F;bin</span><br><span class="line"></span><br><span class="line">GOROOT设置golang的安装位置，我们解压到了&#x2F;usr&#x2F;local&#x2F;目录，该目录下的go&#x2F;文件夹一定是go的环境的根目录，</span><br><span class="line">就是打开go目录后别再有一个go&#x2F;目录</span><br><span class="line"></span><br><span class="line">GOBIN目录是执行 go install 后生成可执行文件的目录</span><br><span class="line"></span><br><span class="line">GOPATH是我们的工作目录，一般我们设置到用户目录下，这个要根据你电脑的实际情况去配置</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+from:<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/33cf4f41cae9">https://www.jianshu.com/p/33cf4f41cae9</a></li>
 </ul>
-<p>from:<a href="https://www.jianshu.com/p/33cf4f41cae9" target="_blank" rel="noopener">https://www.jianshu.com/p/33cf4f41cae9</a></p>
  
       <!-- reward -->
       
@@ -169,6 +171,8 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/" rel="tag">Go</a></li></ul>
+
     </footer>
   </div>
 
@@ -194,6 +198,32 @@
 
   
    
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'fd41c409f93f7676f499',
+    clientSecret: 'af215ead24ff2d4ccc7f95056286f5667970857a',
+    repo: 'upcwxiao.comment',
+    owner: 'upcwxiao',
+    admin: ['upcwxiao'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
      
 </article>
 
@@ -203,7 +233,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2020-2021
         <i class="ri-heart-fill heart_icon"></i> WX
       </li>
     </ul>

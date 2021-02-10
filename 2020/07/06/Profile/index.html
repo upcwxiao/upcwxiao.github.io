@@ -110,8 +110,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在 bash shell 打开时运行，修改该文件配置的环境变量将会影响所有用户使用的bash shell。</span><br><span class="line">注意：这里的bash shell有不同的类别，不同的类别所使用的环境变量配置文件也有所不同。</span><br><span class="line">一般情况下，非登录shell不会执行任何profile文件，非交互shell模式不会执行任何bashrc文件。</span><br></pre></td></tr></table></figure>
 <p>3、/etc/environment</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在系统启动时运行，用于配置与系统运行相关但与用户无关的环境变量，修改该文件配置的环境变量将影响全局。</span><br></pre></td></tr></table></figure>
-
-
 <p>三、用户级：</p>
 <p>1、~/.profile（推荐首选）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.profile: executed by Bourne-compatible login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时执行，每个用户都可以使用该文件来配置专属于自己使用的shell信息。</span><br><span class="line"></span><br></pre></td></tr></table></figure>

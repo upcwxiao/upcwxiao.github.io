@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2021-02-10T02:53:00.845Z</updated>
+  <updated>2021-02-10T03:18:21.918Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://upcwxiao.github.io/2021/02/10/test/"/>
     <id>https://upcwxiao.github.io/2021/02/10/test/</id>
     <published>2021-02-10T02:51:32.000Z</published>
-    <updated>2021-02-10T02:53:00.845Z</updated>
+    <updated>2021-02-10T03:18:21.918Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;&lt;a
+          &lt;p&gt;&lt;img src=&quot;/.io//WechatIMG2.jpeg&quot;
         
       
     
@@ -44,7 +44,7 @@
     <link href="https://upcwxiao.github.io/2021/01/04/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
     <id>https://upcwxiao.github.io/2021/01/04/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</id>
     <published>2021-01-04T01:59:14.000Z</published>
-    <updated>2021-02-10T03:00:08.608Z</updated>
+    <updated>2021-02-10T03:17:14.906Z</updated>
     
     <summary type="html">
     
@@ -52,7 +52,16 @@
       
         
         
-          &lt;h1 id=&quot;1、mysql客户端&quot;&gt;&lt;a href=&quot;#1、mysql客户端&quot; class=&quot;headerlink&quot; title=&quot;1、mysql客户端&quot;&gt;&lt;/a&gt;1、mysql客户端&lt;/h1&gt;&lt;figure class=&quot;highlight
+          &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;软件&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;用途&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;系统&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td
         
       
     

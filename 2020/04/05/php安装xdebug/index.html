@@ -65,7 +65,11 @@
     <div class="article-meta">
       <a href="/2020/04/05/php%E5%AE%89%E8%A3%85xdebug/" class="article-date">
   <time datetime="2020-04-05T11:21:45.000Z" itemprop="datePublished">2020-04-05</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%8E%AF%E5%A2%83/">环境</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -169,6 +173,8 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Php/" rel="tag">Php</a></li></ul>
+
     </footer>
   </div>
 
@@ -192,7 +198,55 @@
     
   </nav>
 
-  
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "zxjqADk5ALYtJK1A13ifwuS4-MdYXbMMI",
+    app_key: "BjV4chkRIASWIDFjq9cCoa6F",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
    
      
 </article>
@@ -203,7 +257,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2020-2021
         <i class="ri-heart-fill heart_icon"></i> WX
       </li>
     </ul>
@@ -495,10 +549,6 @@
 
 <!-- ClickLove -->
 
-
-<script src="/js/clickLove.js"></script>
-
-
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
@@ -571,6 +621,23 @@
 
 
 
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="330" height="110"
+        src="//music.163.com/outchain/player?type=0&id=820084317&auto=1&height=90"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
     
   </div>
 </body>

@@ -137,6 +137,187 @@
     
     
     <article
+  id="post-db/hadoop"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/06/12/db/hadoop/"
+    >hadoop</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/06/12/db/hadoop/" class="article-date">
+  <time datetime="2022-06-12T13:46:49.000Z" itemprop="datePublished">2022-06-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DB/">DB</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ul>
+<li>虚拟机安装centos<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1、虚拟机使用的是VirtualBox，安装的是centos7</span><br><span class="line">2、机器名称依次为：c1 c2 c3，网卡设置两个，一个是nat，一个仅主机网络，时间设置联网时间</span><br><span class="line">  192.168.56.10 c1</span><br><span class="line">  192.168.56.11 c2</span><br><span class="line">  192.168.56.12 c3</span><br><span class="line">4、安装net-tools、ssh </span><br><span class="line">   yum provides ifconfig</span><br><span class="line">   yum install -y net-tools openssh openssh-server openssh-clients</span><br><span class="line">5、修改网卡为固定地址</span><br><span class="line">   cd /etc/sysconfig/network-scripts</span><br><span class="line">   修改ifcfg-enp0s为、</span><br><span class="line">   TYPE=&quot;Ethernet&quot;</span><br><span class="line">   PROXY_METHOD=&quot;none&quot;</span><br><span class="line">   BROWSER_ONLY=&quot;no&quot;</span><br><span class="line">   BOOTPROTO=&quot;static&quot;</span><br><span class="line">   DEFROUTE=&quot;yes&quot;</span><br><span class="line">   IPV4_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">   IPV6INIT=&quot;yes&quot;</span><br><span class="line">   IPV6_AUTOCONF=&quot;yes&quot;</span><br><span class="line">   IPV6_DEFROUTE=&quot;yes&quot;</span><br><span class="line">   IPV6_FAILURE_FATAL=&quot;no&quot;</span><br><span class="line">   IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;</span><br><span class="line">   NAME=&quot;enp0s8&quot;</span><br><span class="line">   UUID=&quot;8503ec74-1684-37c8-a45e-88f945af88b5&quot;</span><br><span class="line">   DEVICE=&quot;enp0s8&quot;</span><br><span class="line">   ONBOOT=&quot;yes&quot;</span><br><span class="line">   IPADDR=192.168.56.10</span><br><span class="line">   NETMASK=255.255.255.0</span><br><span class="line">   GETWAY=192.168.56.1</span><br><span class="line">   DNS1=114.114.114.114</span><br><span class="line">   NDS2=8.8.8.8</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul> 
+      <a class="article-more-link" href="/2022/06/12/db/hadoop/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-system/tcp"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/02/24/system/tcp/"
+    >tcp</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/02/24/system/tcp/" class="article-date">
+  <time datetime="2022-02-24T11:24:21.000Z" itemprop="datePublished">2022-02-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ul>
+<li>1、状态<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、 CLOSED：初始状态，表示TCP连接是“关闭着的”或“未打开的”。</span><br><span class="line">2、 LISTEN：表示服务器端的某个SOCKET处于监听状态，可以接受客户端的连接。</span><br><span class="line">3、 SYN_RCVD：表示服务器接收到了来自客户端请求连接的SYN报文。在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂，基本上用netstat很难看到这种状态，除非故意写一个监测程序，将三次TCP握手过程中最后一个ACK报文不予发送。当TCP连接处于此状态时，再收到客户端的ACK报文，它就会进入到ESTABLISHED状态。</span><br><span class="line">4、 SYN_SENT：这个状态与SYN_RCVD状态相呼应，当客户端SOCKET执行connect()进行连接时，它首先发送SYN报文，然后随即进入到SYN_SENT状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT状态表示客户端已发送SYN报文。</span><br><span class="line">5、 ESTABLISHED：表示TCP连接已经成功建立。</span><br><span class="line">6、 FIN_WAIT_1：这个状态得好好解释一下，其实FIN_WAIT_1和FIN_WAIT_2两种状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN_WAIT_1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET进入到FIN_WAIT_1状态。而当对方回应ACK报文后，则进入到FIN_WAIT_2 态。当然在实际的正常情况下，无论对方处于任何种情况下，都应该马上回应ACK报文，所以FIN_WAIT_1状态一般是比较难见到的，而FIN_WAIT_2状态有时仍可以用netstat看到。</span><br><span class="line">7、 FIN_WAIT_2：上面已经解释了这种状态的由来，实际上FIN_WAIT_2状态下的SOCKET表示半连接，即有一方调用close()主动要求关闭连接。注意：FIN_WAIT_2是没有超时的（不像TIME_WAIT状态），这种状态下如果对方不关闭（不配合完成4次挥手过程），那这个 FIN_WAIT_2状态将一直保持到系统重启，越来越多的FIN_WAIT_2状态会导致内核crash。</span><br><span class="line">8、 TIME_WAIT：表示收到了对方的FIN报文，并发送出了ACK报文。TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。（这种情况应该就是四次挥手变成三次挥手的那种情况）</span><br><span class="line">9、 CLOSING：这种状态在实际情况中应该很少见，属于一种比较罕见的例外状态。正常情况下，当一方发送FIN报文后，按理来说是应该先收到（或同时收到）对方的ACK报文，再收到对方的FIN报文。但是CLOSING 状态表示一方发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢？那就是当双方几乎在同时close()一个SOCKET的话，就出现了双方同时发送FIN报文的情况，这是就会出现CLOSING状态，表示双方都正在关闭SOCKET连接。</span><br><span class="line">10、 CLOSE_WAIT：表示正在等待关闭。怎么理解呢？当对方close()一个SOCKET后发送FIN报文给自己，你的系统毫无疑问地将会回应一个ACK报文给对方，此时TCP连接则进入到CLOSE_WAIT状态。接下来呢，你需要检查自己是否还有数据要发送给对方，如果没有的话，那你也就可以close()这个SOCKET并发送FIN报文给对方，即关闭自己到对方这个方向的连接。有数据的话则看程序的策略，继续发送或丢弃。简单地说，当你处于CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。</span><br><span class="line">11、 LAST_ACK：当被动关闭的一方在发送FIN报文后，等待对方的ACK报文的时候，就处于LAST_ACK状态。当收到对方的ACK报文后，也就可以进入到CLOSED可用状态了。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul> 
+      <a class="article-more-link" href="/2022/02/24/system/tcp/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/" rel="tag">tcp</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-language/tomcat"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/02/22/language/tomcat/"
+    >tomcat</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/02/22/language/tomcat/" class="article-date">
+  <time datetime="2022-02-22T08:24:43.000Z" itemprop="datePublished">2022-02-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ul>
+<li>1、git地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/apache/tomcat.git</span><br></pre></td></tr></table></figure></li>
+<li>2、创建catalina-home<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">创建catalina-home</span><br><span class="line">copy webapps、conf 到catalina-home下</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul> 
+      <a class="article-more-link" href="/2022/02/22/language/tomcat/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/" rel="tag">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-other/国内外标准协会"
   class="article article-type-post"
   itemscope
@@ -564,240 +745,13 @@
 </article>
 
     
-    <article
-  id="post-tool/常用软件"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/01/04/tool/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
-    >常用软件</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/01/04/tool/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="article-date">
-  <time datetime="2021-01-04T01:59:14.000Z" itemprop="datePublished">2021-01-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/">辅助工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <table>
-<thead>
-<tr>
-<th align="center">软件</th>
-<th align="center">用途</th>
-<th align="center">系统</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Sequel Pro</td>
-<td align="center">mysql客户端</td>
-<td align="center">mac</td>
-</tr>
-<tr>
-<td align="center">Workbench</td>
-<td align="center">mysql客户端</td>
-<td align="center">linux、windows</td>
-</tr>
-<tr>
-<td align="center">Navicate</td>
-<td align="center">mysql客户端</td>
-<td align="center">mac、windows</td>
-</tr>
-<tr>
-<td align="center">Another Redis DeskTop Manager</td>
-<td align="center">redis客户端</td>
-<td align="center">mac、linux、windows</td>
-</tr>
-<tr>
-<td align="center">ZOC</td>
-<td align="center">ssh，上传、下载</td>
-<td align="center">mac、windows</td>
-</tr>
-<tr>
-<td align="center">Talend API Tester</td>
-<td align="center">chrome插件，类似postman</td>
-<td align="center">chrome</td>
-</tr>
-<tr>
-<td align="center">JuiceSSH</td>
-<td align="center">android ssh</td>
-<td align="center">android</td>
-</tr>
-<tr>
-<td align="center">Mounty</td>
-<td align="center">读写NTFS格式磁盘</td>
-<td align="center">mac</td>
-</tr>
-<tr>
-<td align="center">Typora</td>
-<td align="center">markdown编辑器，可与PicGo搭配使用</td>
-<td align="center">mac、linux、windows</td>
-</tr>
-</tbody></table>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-tool/Git"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/01/01/tool/Git/"
-    >Git</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/01/01/tool/Git/" class="article-date">
-  <time datetime="2021-01-01T09:18:22.000Z" itemprop="datePublished">2021-01-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/">辅助工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>Git：<a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a></p>
-<p>windows版下载地址：<a target="_blank" rel="noopener" href="https://git-for-windows.github.io/">https://git-for-windows.github.io/</a></p>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>1、创建版本库： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<p>2、提交代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add file1.txt</span><br><span class="line">git commit -m &quot;提交代码&quot;</span><br></pre></td></tr></table></figure>
-<p>3、查看代码状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2021/01/01/tool/Git/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-language/Ajax"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/01/01/language/Ajax/"
-    >Ajax</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/01/01/language/Ajax/" class="article-date">
-  <time datetime="2021-01-01T08:58:23.000Z" itemprop="datePublished">2021-01-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br>在应用时主要是创建XMLHttpRequest对象，调用指定服务地址。<br>但是IE中各个版本支持的不太一样,所以在创建次对象时可能要特殊处理下。<br>一般如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function createXMLHttpRequest() &#123;</span><br><span class="line">    var xmlhttp;</span><br><span class="line">    try &#123;</span><br><span class="line">        xmlhttp = new XMLHttpRequest(); //ie7及以上，其他浏览器   </span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            xmlhttp = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); //ie6     </span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); //ie6以下    </span><br><span class="line">            &#125; catch (e) &#123;</span><br><span class="line">                throw &quot;创建AJAX对象失败！&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return xmlhttp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var xmlhttp = createXMLHttpRequest();</span><br><span class="line">xmlhttp.open(&quot;GET&quot;, &quot;http://localhost:8080/SimpleBlog/AjaxTest&quot;, true);</span><br><span class="line">xmlhttp.send(null);</span><br><span class="line">xmlhttp.onreadystatechange = function (result) &#123;</span><br><span class="line">    if (xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200) &#123;</span><br><span class="line">        alter(result.test);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2021/01/01/language/Ajax/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>

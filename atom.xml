@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2022-02-04T09:34:23.345Z</updated>
+  <updated>2022-06-12T13:53:48.665Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hadoop</title>
+    <link href="https://upcwxiao.github.io/2022/06/12/db/hadoop/"/>
+    <id>https://upcwxiao.github.io/2022/06/12/db/hadoop/</id>
+    <published>2022-06-12T13:46:49.000Z</published>
+    <updated>2022-06-12T13:53:48.665Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;虚拟机安装centos&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1、虚拟机使用的是VirtualBox，安装的是centos7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2、机器名称依次为：c1 c2 c3，网卡设置两个，一个是nat，一个仅主机网络，时间设置联网时间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  192.168.56.10 c1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  192.168.56.11 c2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  192.168.56.12 c3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4、安装net-tools、ssh &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   yum provides ifconfig&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   yum install -y net-tools openssh openssh-server openssh-clients&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5、修改网卡为固定地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   cd /etc/sysconfig/network-scripts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   修改ifcfg-enp0s为、&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   TYPE=&amp;quot;Ethernet&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   PROXY_METHOD=&amp;quot;none&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   BROWSER_ONLY=&amp;quot;no&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   BOOTPROTO=&amp;quot;static&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   DEFROUTE=&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV4_FAILURE_FATAL=&amp;quot;no&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV6INIT=&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV6_AUTOCONF=&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV6_DEFROUTE=&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV6_FAILURE_FATAL=&amp;quot;no&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPV6_ADDR_GEN_MODE=&amp;quot;stable-privacy&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   NAME=&amp;quot;enp0s8&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   UUID=&amp;quot;8503ec74-1684-37c8-a45e-88f945af88b5&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   DEVICE=&amp;quot;enp0s8&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   ONBOOT=&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   IPADDR=192.168.56.10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   NETMASK=255.255.255.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   GETWAY=192.168.56.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   DNS1=114.114.114.114&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   NDS2=8.8.8.8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="DB" scheme="https://upcwxiao.github.io/categories/DB/"/>
+    
+    
+      <category term="hadoop" scheme="https://upcwxiao.github.io/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tcp</title>
+    <link href="https://upcwxiao.github.io/2022/02/24/system/tcp/"/>
+    <id>https://upcwxiao.github.io/2022/02/24/system/tcp/</id>
+    <published>2022-02-24T11:24:21.000Z</published>
+    <updated>2022-06-12T13:54:23.911Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;1、状态&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1、 CLOSED：初始状态，表示TCP连接是“关闭着的”或“未打开的”。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2、 LISTEN：表示服务器端的某个SOCKET处于监听状态，可以接受客户端的连接。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3、 SYN_RCVD：表示服务器接收到了来自客户端请求连接的SYN报文。在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂，基本上用netstat很难看到这种状态，除非故意写一个监测程序，将三次TCP握手过程中最后一个ACK报文不予发送。当TCP连接处于此状态时，再收到客户端的ACK报文，它就会进入到ESTABLISHED状态。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4、 SYN_SENT：这个状态与SYN_RCVD状态相呼应，当客户端SOCKET执行connect()进行连接时，它首先发送SYN报文，然后随即进入到SYN_SENT状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT状态表示客户端已发送SYN报文。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5、 ESTABLISHED：表示TCP连接已经成功建立。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6、 FIN_WAIT_1：这个状态得好好解释一下，其实FIN_WAIT_1和FIN_WAIT_2两种状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN_WAIT_1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET进入到FIN_WAIT_1状态。而当对方回应ACK报文后，则进入到FIN_WAIT_2 态。当然在实际的正常情况下，无论对方处于任何种情况下，都应该马上回应ACK报文，所以FIN_WAIT_1状态一般是比较难见到的，而FIN_WAIT_2状态有时仍可以用netstat看到。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7、 FIN_WAIT_2：上面已经解释了这种状态的由来，实际上FIN_WAIT_2状态下的SOCKET表示半连接，即有一方调用close()主动要求关闭连接。注意：FIN_WAIT_2是没有超时的（不像TIME_WAIT状态），这种状态下如果对方不关闭（不配合完成4次挥手过程），那这个 FIN_WAIT_2状态将一直保持到系统重启，越来越多的FIN_WAIT_2状态会导致内核crash。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8、 TIME_WAIT：表示收到了对方的FIN报文，并发送出了ACK报文。TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。（这种情况应该就是四次挥手变成三次挥手的那种情况）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9、 CLOSING：这种状态在实际情况中应该很少见，属于一种比较罕见的例外状态。正常情况下，当一方发送FIN报文后，按理来说是应该先收到（或同时收到）对方的ACK报文，再收到对方的FIN报文。但是CLOSING 状态表示一方发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢？那就是当双方几乎在同时close()一个SOCKET的话，就出现了双方同时发送FIN报文的情况，这是就会出现CLOSING状态，表示双方都正在关闭SOCKET连接。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10、 CLOSE_WAIT：表示正在等待关闭。怎么理解呢？当对方close()一个SOCKET后发送FIN报文给自己，你的系统毫无疑问地将会回应一个ACK报文给对方，此时TCP连接则进入到CLOSE_WAIT状态。接下来呢，你需要检查自己是否还有数据要发送给对方，如果没有的话，那你也就可以close()这个SOCKET并发送FIN报文给对方，即关闭自己到对方这个方向的连接。有数据的话则看程序的策略，继续发送或丢弃。简单地说，当你处于CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11、 LAST_ACK：当被动关闭的一方在发送FIN报文后，等待对方的ACK报文的时候，就处于LAST_ACK状态。当收到对方的ACK报文后，也就可以进入到CLOSED可用状态了。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://upcwxiao.github.io/categories/Linux/"/>
+    
+    
+      <category term="tcp" scheme="https://upcwxiao.github.io/tags/tcp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tomcat</title>
+    <link href="https://upcwxiao.github.io/2022/02/22/language/tomcat/"/>
+    <id>https://upcwxiao.github.io/2022/02/22/language/tomcat/</id>
+    <published>2022-02-22T08:24:43.000Z</published>
+    <updated>2022-06-12T13:54:23.907Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;1、git地址&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://github.com/apache/tomcat.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;2、创建catalina-home&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;创建catalina-home&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;copy webapps、conf 到catalina-home下&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="语言" scheme="https://upcwxiao.github.io/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="tomcat" scheme="https://upcwxiao.github.io/tags/tomcat/"/>
+    
+  </entry>
   
   <entry>
     <title>国内外标准协会</title>
@@ -75,7 +151,7 @@
     <link href="https://upcwxiao.github.io/2022/01/24/system/%E7%BD%91%E7%BB%9C/"/>
     <id>https://upcwxiao.github.io/2022/01/24/system/%E7%BD%91%E7%BB%9C/</id>
     <published>2022-01-24T02:10:25.000Z</published>
-    <updated>2022-02-04T09:50:31.304Z</updated>
+    <updated>2022-06-12T13:54:23.915Z</updated>
     
     <summary type="html">
     
@@ -475,96 +551,6 @@
     
     
       <category term="Jenkins" scheme="https://upcwxiao.github.io/tags/Jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Termux</title>
-    <link href="https://upcwxiao.github.io/2020/12/27/system/Termux/"/>
-    <id>https://upcwxiao.github.io/2020/12/27/system/Termux/</id>
-    <published>2020-12-27T09:59:54.000Z</published>
-    <updated>2022-02-04T09:34:23.349Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近发现了一个很有趣的App Termux可以在Android上模拟Linux&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;下载途径有Google Play和F-Droid(一个免费和开源应用的下载平台),我下载的是0.103版本&lt;/li&gt;
-&lt;li&gt;下载的为apk文件,下载完安装即可.&lt;/li&gt;
-&lt;li&gt;推荐一个学习的网址: &lt;a href=&quot;https://www.sqlsec.com/2018/05/termux.html&quot;&gt;https://www.sqlsec.com/2018/05/termux.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;我的配置:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;1.安装vim&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;dpk install vim&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;2.修改源(清华大学的F-Droid源说明)&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://mirror.tuna.tsinghua.edu.cn/help/termux/)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;编辑 $PREFIX/etc/apt/sources.list 修改为如下内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# The termux repository mirror from TUNA:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;deb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;编辑 $PREFIX/etc/apt/sources.list.d/science.list 修改为如下内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# The termux repository mirror from TUNA:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;deb https://mirrors.tuna.tsinghua.edu.cn/termux/science-packages-24 science stable&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;编辑 $PREFIX/etc/apt/sources.list.d/game.list 修改为如下内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# The termux repository mirror from TUNA:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;deb https://mirrors.tuna.tsinghua.edu.cn/termux/game-packages-24 games stable&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="系统" scheme="https://upcwxiao.github.io/categories/%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="Termux" scheme="https://upcwxiao.github.io/tags/Termux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot-Swagger</title>
-    <link href="https://upcwxiao.github.io/2020/12/27/language/SpringBoot-Swagger/"/>
-    <id>https://upcwxiao.github.io/2020/12/27/language/SpringBoot-Swagger/</id>
-    <published>2020-12-27T08:44:50.000Z</published>
-    <updated>2022-02-04T09:34:23.341Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;OpenAPI &amp;amp; Swagger&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;OpenAPI:“开放 API 战略” (Open API Initiativev) , 在2017年发布了 OpenAPI 规范3.0版的预览，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并规划于二月底发布实施草案（Implementer Draft）.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;OpenAPI规范(OpenAPI Specification,简称:OAS)是基于Swagger 2.0构建，Swagger是SmartBear2015年&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;贡献给Linux基金会,使Swagger项目专注于围绕OAS的开源工具.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;li&gt;SpringFox&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;SpringFox是Spring社区维护的一个项目（非官方），帮助使用者将Swagger2集成到 Spring中,用于Spring中&lt;br&gt;帮助开发者生成文档，并可以轻松的在Spring Boot中使用.&lt;br&gt;但,其在2020.7月才更新支持OpenAPI3,目前网上大多的文档都是Swagger2的配置说明,官方也未更新新的文档,&lt;br&gt;仅发布一个新的版本,好处是兼容Swagger2注解.&lt;/p&gt;
-&lt;p&gt;官方地址: &lt;a href=&quot;http://springfox.github.io/springfox&quot;&gt;http://springfox.github.io/springfox&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Springfox 3.0.0添加到Spring Boot项目中&lt;/p&gt;
-&lt;p&gt;1.引入依赖&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;artifactId&amp;gt;springfox-boot-starter&amp;lt;/artifactId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;version&amp;gt;3.0.0&amp;lt;/version&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="语言" scheme="https://upcwxiao.github.io/categories/%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="Spring Boot" scheme="https://upcwxiao.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu-删除内核</title>
-    <link href="https://upcwxiao.github.io/2020/07/07/system/Ubuntu-%E5%88%A0%E9%99%A4%E5%86%85%E6%A0%B8/"/>
-    <id>https://upcwxiao.github.io/2020/07/07/system/Ubuntu-%E5%88%A0%E9%99%A4%E5%86%85%E6%A0%B8/</id>
-    <published>2020-07-07T11:30:37.000Z</published>
-    <updated>2022-02-04T09:34:23.349Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;1、第一步&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td
-        
-      
-    
-    </summary>
-    
-    
-      <category term="系统" scheme="https://upcwxiao.github.io/categories/%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="Linux" scheme="https://upcwxiao.github.io/tags/Linux/"/>
-    
-      <category term="Ubuntu" scheme="https://upcwxiao.github.io/tags/Ubuntu/"/>
     
   </entry>
   

@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Profile |  WX NOTE
+    tcp |  WX NOTE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -45,7 +45,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-system/Profile"
+  id="post-system/tcp"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -56,18 +56,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Profile
+  tcp
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/07/06/system/Profile/" class="article-date">
-  <time datetime="2020-07-06T03:27:29.000Z" itemprop="datePublished">2020-07-06</time>
+      <a href="/2022/02/24/system/tcp/" class="article-date">
+  <time datetime="2022-02-24T11:24:21.000Z" itemprop="datePublished">2022-02-24</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%B3%BB%E7%BB%9F/">系统</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </div>
   
 <div class="word_count">
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">958</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -84,51 +84,43 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">6 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="环境变量：-etc-profile-etc-bashrc-profile-bashrc"><a href="#环境变量：-etc-profile-etc-bashrc-profile-bashrc" class="headerlink" title="环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc"></a>环境变量：/etc/profile; /etc/bashrc; ~/.profile; ~/.bashrc</h3><p>一、环境变量介绍：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在Linux系统中，环境变量按照其作用范围不同大致可以分为系统级环境变量和用户级环境变量。</span><br><span class="line"></span><br><span class="line">系统级环境变量：每一个登录到系统的用户都能够读取到系统级的环境变量；</span><br><span class="line">用户级环境变量：每一个登录到系统的用户只能够读取属于自己的用户级的环境变量；</span><br><span class="line">自然而然地，环境变量的配置文件也相应的被分成了系统级和用户级两种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <ul>
+<li>1、状态<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、 CLOSED：初始状态，表示TCP连接是“关闭着的”或“未打开的”。</span><br><span class="line">2、 LISTEN：表示服务器端的某个SOCKET处于监听状态，可以接受客户端的连接。</span><br><span class="line">3、 SYN_RCVD：表示服务器接收到了来自客户端请求连接的SYN报文。在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂，基本上用netstat很难看到这种状态，除非故意写一个监测程序，将三次TCP握手过程中最后一个ACK报文不予发送。当TCP连接处于此状态时，再收到客户端的ACK报文，它就会进入到ESTABLISHED状态。</span><br><span class="line">4、 SYN_SENT：这个状态与SYN_RCVD状态相呼应，当客户端SOCKET执行connect()进行连接时，它首先发送SYN报文，然后随即进入到SYN_SENT状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT状态表示客户端已发送SYN报文。</span><br><span class="line">5、 ESTABLISHED：表示TCP连接已经成功建立。</span><br><span class="line">6、 FIN_WAIT_1：这个状态得好好解释一下，其实FIN_WAIT_1和FIN_WAIT_2两种状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN_WAIT_1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET进入到FIN_WAIT_1状态。而当对方回应ACK报文后，则进入到FIN_WAIT_2 态。当然在实际的正常情况下，无论对方处于任何种情况下，都应该马上回应ACK报文，所以FIN_WAIT_1状态一般是比较难见到的，而FIN_WAIT_2状态有时仍可以用netstat看到。</span><br><span class="line">7、 FIN_WAIT_2：上面已经解释了这种状态的由来，实际上FIN_WAIT_2状态下的SOCKET表示半连接，即有一方调用close()主动要求关闭连接。注意：FIN_WAIT_2是没有超时的（不像TIME_WAIT状态），这种状态下如果对方不关闭（不配合完成4次挥手过程），那这个 FIN_WAIT_2状态将一直保持到系统重启，越来越多的FIN_WAIT_2状态会导致内核crash。</span><br><span class="line">8、 TIME_WAIT：表示收到了对方的FIN报文，并发送出了ACK报文。TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。（这种情况应该就是四次挥手变成三次挥手的那种情况）</span><br><span class="line">9、 CLOSING：这种状态在实际情况中应该很少见，属于一种比较罕见的例外状态。正常情况下，当一方发送FIN报文后，按理来说是应该先收到（或同时收到）对方的ACK报文，再收到对方的FIN报文。但是CLOSING 状态表示一方发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢？那就是当双方几乎在同时close()一个SOCKET的话，就出现了双方同时发送FIN报文的情况，这是就会出现CLOSING状态，表示双方都正在关闭SOCKET连接。</span><br><span class="line">10、 CLOSE_WAIT：表示正在等待关闭。怎么理解呢？当对方close()一个SOCKET后发送FIN报文给自己，你的系统毫无疑问地将会回应一个ACK报文给对方，此时TCP连接则进入到CLOSE_WAIT状态。接下来呢，你需要检查自己是否还有数据要发送给对方，如果没有的话，那你也就可以close()这个SOCKET并发送FIN报文给对方，即关闭自己到对方这个方向的连接。有数据的话则看程序的策略，继续发送或丢弃。简单地说，当你处于CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。</span><br><span class="line">11、 LAST_ACK：当被动关闭的一方在发送FIN报文后，等待对方的ACK报文的时候，就处于LAST_ACK状态。当收到对方的ACK报文后，也就可以进入到CLOSED可用状态了。</span><br></pre></td></tr></table></figure>
 
-<p>二、系统级：</p>
-<p>1、/etc/profile</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在系统启动后,第一个用户登录时运行,并从/etc/profile.d目录的配置文件中搜集shell的设置，使用该文件配置的环境变量</span><br><span class="line">将应用于登录到系统的每一个huanjing以下命令可以使配置文件立刻生效。</span><br><span class="line"></span><br><span class="line">　　source /etc/profile</span><br><span class="line">　　echo $PATH</span><br></pre></td></tr></table></figure>
-
+</li>
+</ul>
 <span id="more"></span>
 
-<p>2、/etc/bashrc（Ubuntu和Debian中是/etc/bash.bashrc）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在 bash shell 打开时运行，修改该文件配置的环境变量将会影响所有用户使用的bash shell。</span><br><span class="line">注意：这里的bash shell有不同的类别，不同的类别所使用的环境变量配置文件也有所不同。</span><br><span class="line">一般情况下，非登录shell不会执行任何profile文件，非交互shell模式不会执行任何bashrc文件。</span><br></pre></td></tr></table></figure>
-
-<p>3、/etc/environment</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在系统启动时运行，用于配置与系统运行相关但与用户无关的环境变量，修改该文件配置的环境变量将影响全局。</span><br></pre></td></tr></table></figure>
-
-
-<p>三、用户级：</p>
-<p>1、~/.profile（推荐首选）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/.profile: executed by Bourne-compatible login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时执行，每个用户都可以使用该文件来配置专属于自己使用的shell信息。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>2、~/.bashrc</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">~/.bashrc: executed by bash(1) for non-login shells.</span><br><span class="line"></span><br><span class="line">当用户登录时以及每次打开新的shell时该文件都将被读取，不推荐在这里配置用户专用的环境变量，因为每开一个shell，</span><br><span class="line">该文件都会被读取一次，效率肯定受影响。</span><br><span class="line">生效用：source</span><br><span class="line">bashrc和profile的差异</span><br><span class="line">从上面的英文描述可以知道，bashrc和profile的差异在于：</span><br><span class="line"></span><br><span class="line">　　注意：通常我们修改bashrc,有些linux的发行版本不一定有profile这个文件；</span><br><span class="line"></span><br><span class="line">1. bashrc 是在系统启动后就会自动运行。</span><br><span class="line">2. profile 是在用户登录后才会运行。</span><br><span class="line">3. 进行设置后，可运用source bashrc命令更新bashrc，也可运用source profile命令更新profile。</span><br><span class="line">4. /etc/profile中设定的变量(全局)的可以作用于任何用户，而~/.bashrc等中设定的变量(局部)只能继承</span><br><span class="line">/etc/profile中的变量，他们是&quot;父子&quot;关系。</span><br></pre></td></tr></table></figure>
-
-<p>3、~/.bash_profile 或 ~./bash_login</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">~/.bash_profile or ~./bash_login - If one of these file exist, bash executes it rather then &quot;~/.profile&quot;</span><br><span class="line">when it is started as a login shell. (Bash will prefer &quot;~/.bash_profile&quot; to &quot;~/.bash_login&quot;).</span><br><span class="line">However, these files won&#x27;t influence a graphical session by default.</span><br><span class="line"></span><br><span class="line">以上是ubuntu官网给出的关于~/.bash_profile 和 ~./bash_login 的说明，翻译为中文：</span><br><span class="line">~/.bash_profile 或 ~./bash_login -</span><br><span class="line">如果有其中的一个文件存在的话, 当启动的是一个登录shell时，Bash 会执行该文件而不会执行~/.profile ；</span><br><span class="line">如果两个文件都存在的话，Bash 将会优先执行~/.bash_profile 而不是~/.bash_login ；</span><br><span class="line">然而, 默认情况下，这些文件不会影响图形会话。</span><br></pre></td></tr></table></figure>
-
-<p>4、~/.bash_logout</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当每次退出系统(退出bash shell)时执行该文件。</span><br><span class="line"></span><br><span class="line">注意：Linux系统使用 $VARIABLE_NAME 访问环境变量，多个环境变量之间使用 “:”分隔，Windows系统使用 </span><br><span class="line">%VARIABLE_NAME% 访问环境变量，多个环境变量之间使用 ; 分隔。</span><br></pre></td></tr></table></figure>
-
-<p>四、执行顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">一般情况下，Linux加载环境变量配置文件的执行顺序为：</span><br><span class="line"></span><br><span class="line">==&gt; /etc/profile</span><br><span class="line">==&gt; ~/.bash_profile | ~/.bash_login | ~/.profile</span><br><span class="line">==&gt; ~/.bashrc</span><br><span class="line">==&gt; /etc/bashrc</span><br><span class="line">==&gt; ~/.bash_logout</span><br></pre></td></tr></table></figure> 
+<p><img src="/2022/02/24/system/tcp/tcp.png" alt="tcp"></p>
+<ul>
+<li>2、三次握手</li>
+</ul>
+<p><img src="/2022/02/24/system/tcp/three.png" alt="three"></p>
+<ul>
+<li>3、四次挥手</li>
+</ul>
+<p><img src="/2022/02/24/system/tcp/four.png" alt="four"></p>
+<ul>
+<li>4、tcp头</li>
+</ul>
+<p><img src="/2022/02/24/system/tcp/tcp_head.png" alt="tcp_head"></p>
+<p>SYN：SYN= 1 表示这是一个连接请求或连接接受报文。在建立连接时用来进行同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文段。对方若是同意建立连接，则应响应的报文段中使SYN=1、ACK=1。因此SYN=1表示该报文是一个连接请求报文或者是一个连接请求接收报文。<br>ACK：确认号只有在该位设置为1的时候才生效，当该位为0是表示确认号无效。TCP规定，在TCP连接建立后所有传送的数据报文段ACK都必须设置为1。<br>FIN：当 FIN = 1 时，表明此报文段的发送方的数据已经发送完毕，并要求释放连接。</p>
+<p>序号：占4个字节，它的范围在0-2^32-1，序号随着通信的进行不断的递增，当达到最大值的时候重新回到0在开始递增。TCP是面向字节流的，在一个TCP连接中传送的字节流中的每一个字节都按照顺序编号。整个要传送的字节流的起始号必须在连接建立时设置。首部中的序列号字段指的是本报文段所发送的数据的第一个字节的序号。例如，一个报文序号是301，而携带的数据共有100字节。则表示本次报文中的序号是301，下一个报文的序号是401.重复一下，每一个报文的序号是该报文包含的字节中第一个字节的编号。<br>确认号：占4个字节，确认号，是对下一个想要接受的字节的期望，这里隐式确认了对上一个数据包的成功接收。如上例，在成功接收了序号为301的数据包，想要接收下一个数据包因为上个数据包包含100字节，所以此时的确认号应该是401，表示希望接收下一个序号是401的数据包。</p>
+<p>内容参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qingergege/p/6603488.html">https://www.cnblogs.com/qingergege/p/6603488.html</a></p>
+ 
       <!-- reward -->
       
     </div>
@@ -192,12 +184,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://upcwxiao.github.io/2020/07/06/system/Profile/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://upcwxiao.github.io/2022/02/24/system/tcp/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/" rel="tag">tcp</a></li></ul>
 
     </footer>
   </div>
@@ -205,19 +197,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/07/07/other/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%B6%A3%E9%97%BB/" class="article-nav-link">
+      <a href="/2022/06/12/db/hadoop/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            字符编码趣闻
+            hadoop
           
         </div>
       </a>
     
     
-      <a href="/2020/07/06/language/JDK/" class="article-nav-link">
+      <a href="/2022/02/22/language/tomcat/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">JDK</div>
+        <div class="article-nav-title">tomcat</div>
       </a>
     
   </nav>

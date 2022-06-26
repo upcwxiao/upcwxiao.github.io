@@ -11,6 +11,9 @@
 <span id="more"></span>
 
 <ul>
+<li><p>开启ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开以下注释</span><br><span class="line">cd /etc/ssh/</span><br><span class="line">vim sshd_config</span><br><span class="line"></span><br><span class="line">PermitRootLogin         yes		    #是否允许root用户登录</span><br><span class="line">PermitEmptyPasswords    no	      #是否允许空密码</span><br><span class="line">PasswordAuthentication  yes	      #是否允许密码验证</span><br><span class="line">AllowUsers              xxxxx		  #允许xxxxx用户登录，可以不打开</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>配置ssh</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">两种方式拷贝到带登录机器</span><br><span class="line"></span><br><span class="line">1、ssh-copy-id 命令将公钥复制或上传到远程主机，并将身份标识文件追加到远程主机的 ~/.ssh/authorized_keys中</span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@ip</span><br><span class="line"></span><br><span class="line">2、scp拷贝远程主机，手动追加到authorized_keys中</span><br><span class="line">scp ～/.ssh/id_rsa.pub 用户名@远程主机:~/.ssh/</span><br><span class="line">登录远程主机，执行</span><br><span class="line">cd ~/.ssh/</span><br><span class="line">cat id_rsa.pub &gt;&gt;authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure></li>
 <li><p>配置jdk</p>

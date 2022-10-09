@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://upcwxiao.github.io/"/>
-  <updated>2022-10-08T05:32:15.250Z</updated>
+  <updated>2022-10-09T06:54:03.860Z</updated>
   <id>https://upcwxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ansible</title>
+    <link href="https://upcwxiao.github.io/2022/10/09/tool/ansible/"/>
+    <id>https://upcwxiao.github.io/2022/10/09/tool/ansible/</id>
+    <published>2022-10-09T06:44:00.000Z</published>
+    <updated>2022-10-09T06:54:03.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;docker运行jenkins,详见: &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="辅助工具" scheme="https://upcwxiao.github.io/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Ansible" scheme="https://upcwxiao.github.io/tags/Ansible/"/>
+    
+  </entry>
   
   <entry>
     <title>hadoop</title>
@@ -523,34 +551,6 @@
     
     
       <category term="AB" scheme="https://upcwxiao.github.io/tags/AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins</title>
-    <link href="https://upcwxiao.github.io/2020/12/28/tool/Jenkins/"/>
-    <id>https://upcwxiao.github.io/2020/12/28/tool/Jenkins/</id>
-    <published>2020-12-28T01:32:55.000Z</published>
-    <updated>2022-02-04T09:34:23.357Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;docker运行jenkins,详见: &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="辅助工具" scheme="https://upcwxiao.github.io/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Jenkins" scheme="https://upcwxiao.github.io/tags/Jenkins/"/>
     
   </entry>
   
